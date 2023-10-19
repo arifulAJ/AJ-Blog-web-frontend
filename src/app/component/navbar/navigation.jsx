@@ -1,15 +1,52 @@
 "use client";
-
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { ImCross } from "react-icons/im";
-import getAllArticle from "../libs/getAllArticle";
+import ProfilePopup from "../profilePopUP/profilePopUp";
+
+import { useRouter } from "next/navigation";
+
+import {
+  getTokenFromServer,
+  getUserbyToken,
+} from "../utils/tokenvarifay/tokenApi";
 
 const NavigationBar = () => {
   const [isMenuVisible, setIsMenuVisible] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
+  const [avatar, setAvatar] = useState("");
+  const [isToken, setIsToken] = useState(null);
+  const [isProfilePopupVisible, setIsProfilePopupVisible] = useState(false);
+  const router = useRouter();
+
+  useEffect(() => {
+    getTokenFromServer()
+      .then((fetchedToken) => {
+        if (fetchedToken) {
+          setIsToken(fetchedToken);
+        } else {
+          router.push("/home");
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, [router]);
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const userData = await getUserbyToken();
+        setAvatar(userData.avatar); // Set the avatar property in the state
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
+    };
+
+    fetchUserData();
+  }, []);
 
   const toggleMenu = () => {
     setIsMenuVisible(!isMenuVisible);
@@ -48,7 +85,7 @@ const NavigationBar = () => {
     <header className="pl-2 md:px-14 bg-hover-effect">
       <nav className="p-2">
         <div className="">
-          <div className="md:flex  md:items-center md:justify-between ">
+          <div className="md:flex   md:items-center md:justify-between ">
             <div className="flex justify-between items-center text-white font-bold text-xl mb-2 md:mb-0">
               <Link href="/">
                 <Image
@@ -79,7 +116,7 @@ const NavigationBar = () => {
             </div>
 
             <ul
-              className={` md:flex flex-row md:flex-row  md:space-y-0 font-semibold md:space-x-6 ${
+              className={` md:flex flex-row md:flex-row items-center  md:space-y-0 font-semibold md:space-x-6 ${
                 isMenuVisible ? "block" : "hidden"
               }`}
             >
@@ -96,9 +133,12 @@ const NavigationBar = () => {
                 <Link href="/contact">Contact</Link>
               </li>
 
-              <li className="hover:text-button-color">
-                <Link href="/signup">Signup</Link>
-              </li>
+              {isToken ? undefined : ( // </li> //   <Profile /> // <li className="hover:text-button-color">
+                <li className="hover:text-button-color">
+                  <Link href="/signup">Signup</Link>
+                </li>
+              )}
+
               <li>
                 <form onSubmit={handleSearchSubmit}>
                   <input
@@ -112,6 +152,24 @@ const NavigationBar = () => {
                   {/* <button type="submit">Submit</button> */}
                 </form>
               </li>
+              {isToken !== null ? (
+                <li className="w-14 h-14 rounded-full overflow-hidden">
+                  <Image
+                    // className="rounded-full hover:border-r-white hover:border-2  hover:font-bold hover:border-solid"
+                    className="rounded-full hover:border-r-white hover:border-2 hover:font-bold hover:border-solid"
+                    src={
+                      avatar ||
+                      "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/OOjs_UI_icon_userAvatar-progressive.svg/768px-OOjs_UI_icon_userAvatar-progressive.svg.png"
+                    }
+                    height={100}
+                    width={100}
+                    alt="profile"
+                    onClick={() =>
+                      setIsProfilePopupVisible(!isProfilePopupVisible)
+                    }
+                  />{" "}
+                </li>
+              ) : undefined}
             </ul>
           </div>
           {/* Display search results */}
@@ -125,6 +183,7 @@ const NavigationBar = () => {
       </div> */}
         </div>
       </nav>
+      {isProfilePopupVisible && <ProfilePopup />}
     </header>
   );
 };

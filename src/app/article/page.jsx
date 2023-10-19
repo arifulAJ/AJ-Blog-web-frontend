@@ -1,9 +1,11 @@
-import React from 'react'
+import React from "react";
 
-const articlePage = () => {
+const AllArticle = () => {
   return (
-    <div>articlePage</div>
-  )
-}
+    <div>
+      <h1>article </h1>
+    </div>
+  );
+};
 
-export default articlePage
+export default AllArticle;
