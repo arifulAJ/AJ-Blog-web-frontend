@@ -40,7 +40,7 @@ const FeaturePostSection = () => {
 
       <div className="flex flex-col md:flex-row my-8 ">
         <div className="basis-1/2">
-          {articles.slice(0, 3).map((article) => (
+          {articles.slice(0, 5).map((article) => (
             <div key={article.id}>
               <FeatureCard {...article} />
             </div>
@@ -49,7 +49,7 @@ const FeaturePostSection = () => {
         <div className="basis-1/2">
           {articles.length > 0 && (
             <div>
-              <FeatureCardRight {...articles[3]} />
+              <FeatureCardRight {...articles[5]} />
             </div>
           )}
         </div>

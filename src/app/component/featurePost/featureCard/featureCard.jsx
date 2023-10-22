@@ -17,14 +17,15 @@ const FeatureCard = (article) => {
 
   return (
     <div className="flex flex-col sm:flex-row my-2 py-2 px-2 rounded-xl border hover:border-button-color duration-700 ">
-      <div className=" mb-2 sm:mr-2 sm:mb-0 ">
+      <div className=" h-36 w-60 mb-2 sm:mr-2 sm:mb-0 ">
         {isValidURL(coverURL) ? (
           <Image
-            className=" rounded-2xl "
+            className=" rounded-2xl  "
             src={coverURL}
             width={606}
             height={168}
             alt={`${article.tags} Image`}
+            style={{ objectFit: "cover", width: "100%", height: "100%" }}
           />
         ) : (
           // <img className="w-full h-200 sm:w-206 sm:h-165" src={coverURL}  alt={`${article.tags} Image`} />

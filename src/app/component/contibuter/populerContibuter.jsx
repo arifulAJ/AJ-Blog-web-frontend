@@ -13,7 +13,8 @@ const PopulerContibuter = async () => {
     const authorArticleCounts = {};
 
     articles.forEach((article) => {
-      const authorId = article.author.id;
+      const authorId = article.author?.id;
+
       if (authorArticleCounts[authorId]) {
         authorArticleCounts[authorId]++;
       } else {

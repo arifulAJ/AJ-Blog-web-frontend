@@ -23,6 +23,7 @@ export function middleware(request) {
   if (!isPublicPath && !token) {
     return NextResponse.redirect(new URL("/login", request.nextUrl));
   }
+  console.log(token, isPublicPath, path);
 }
 
 // See "Matching Paths" below to learn more
@@ -34,5 +35,6 @@ export const config = {
     "/article",
     "/articleCreate",
     "/profilePopUp",
+    "/profile",
   ],
 };
