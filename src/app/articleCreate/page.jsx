@@ -4,7 +4,7 @@ import AvatarUpload from "../component/utils/avaterUplode/avaterUplode";
 
 import { getTokenFromServer } from "../component/utils/tokenvarifay/tokenApi";
 import toast from "react-hot-toast";
-// import uploadImageToCloudinary from "../component/utils/avaterUplode/uplodeFunction";
+
 const initialData = {
   title: "",
   body: "",

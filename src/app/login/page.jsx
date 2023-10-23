@@ -149,7 +149,7 @@ const LoginPage = () => {
           </form>
         </div>
         <p className="text-1xl text-slate-500 pt-3">
-          If you don't have an account{" "}
+          If you don't have an account
           <Link className="font-semibold text-button-color" href="/signup">
             Signup
           </Link>
