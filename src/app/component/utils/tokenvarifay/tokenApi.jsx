@@ -25,7 +25,7 @@ export async function getTokenFromServer() {
   // "http://localhost:5000/api/v1/auth/token"
   try {
     const response = await axios.get(
-      "https://ar-blog-api.onrender.com/api/v1/auth/token",
+      "http://localhost:5000/api/v1/auth/token",
       {
         withCredentials: true,
       }
