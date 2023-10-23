@@ -21,17 +21,22 @@ import axios from "axios";
 //   }
 // }
 export async function getTokenFromServer() {
+  // https://ar-blog-api.onrender.com/api/v1/auth/token
+  // "http://localhost:5000/api/v1/auth/token"
   try {
     const response = await axios.get(
-      "https://ar-blog-api.onrender.com/api/v1/auth/token",
+      "http://localhost:5000/api/v1/auth/token",
       {
-        withCredentials: true, // Include cookies in the request
+        withCredentials: true,
       }
     );
+    console.log("Response status:", response.status);
+    console.log("Response data:", response.data);
+
     const data = await response.data;
     console.log(data);
     if (response.status === 200) {
-      return response.data.token;
+      return await response.data.token;
     } else {
       throw new Error("Failed to fetch token");
     }
@@ -49,9 +54,9 @@ export async function getUserbyToken() {
         withCredentials: true, // Include cookies in the request
       }
     );
-
+    console.log(response.data, "token");
     if (response.status === 200) {
-      const data = response.data;
+      const data = await response.data;
 
       return data;
     } else {

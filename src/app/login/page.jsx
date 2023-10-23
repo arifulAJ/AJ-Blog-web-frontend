@@ -49,23 +49,22 @@ const LoginPage = () => {
       setError("Email and Password are required.");
       return;
     }
+    // https://ar-blog-api.onrender.com/api/v1/auth/signin
+    // http://localhost:5000/api/v1/auth/signin
 
     try {
-      const response = await fetch(
-        "https://ar-blog-api.onrender.com/api/v1/auth/signin",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
-          credentials: "include",
-          cache: "no-cache",
-        }
-      );
+      const response = await fetch("http://localhost:5000/api/v1/auth/signin", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+        credentials: "include",
+        cache: "no-cache",
+      });
 
       const { code, message } = await response.json();
-
+      console.log(message);
       if (response.status === 200 && code === 200) {
         toast.success(message);
 
