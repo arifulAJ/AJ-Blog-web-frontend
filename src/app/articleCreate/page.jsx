@@ -109,8 +109,8 @@ const ArticleForm = () => {
   return (
     <div className="w-full bg-transparent bg-slate-300  p-2 sm:p-12">
       <h1 className=" font-bold text-slate-700 sm:text-4xl p-3 pb-12">
-        Unleash the Boundless Power of Your Imagination, Craft Captivating
-        Narratives, and Inspire the World with the Brilliance of Your Words.
+        Unleash the Boundless Power of Your Imagination Craft Captivating
+        Narratives and Inspire the World with the Brilliance of Your Words
       </h1>
       <div className="flex justify-center">
         <form
