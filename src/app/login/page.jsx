@@ -62,12 +62,13 @@ const LoginPage = () => {
           },
           body: JSON.stringify(formData),
           credentials: "include",
+
           cache: "no-cache",
         }
       );
 
-      const { code, message } = await response.json();
-      console.log(message);
+      const { code, message, data } = await response.json();
+      console.log(message, data);
       if (response.status === 200 && code === 200) {
         toast.success(message);
 
