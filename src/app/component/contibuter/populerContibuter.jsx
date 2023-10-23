@@ -70,7 +70,7 @@ const PopulerContibuter = async () => {
                 />
                 <h2 className="text-lg font-semibold  ">{author.name}</h2>
                 <p className=" ">Posts: {author.articleCount} Articles</p>
-              </div>{" "}
+              </div>
             </div>
           </Link>
         ))}

@@ -32,7 +32,7 @@ const page = async ({ params }) => {
               />
               <h1 className="font-semibold">Title: {article.title}</h1>
               <p>
-                <span className="font-semibold"> Artice:</span>{" "}
+                <span className="font-semibold"> Artice:</span>
                 {article.body.slice(0, 100)} ...
                 <Link
                   className="font-semibold hover:text-button-color"

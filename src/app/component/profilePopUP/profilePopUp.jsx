@@ -66,7 +66,6 @@ const ProfilePopup = () => {
       <h4 className="text-center  text-white">{avatar.name}</h4>
       <Link href="/profile" className="block py-1">
         <button className="bg-black hover:bg-green-900 text-white px-4 py-1 font-semibold ml-8 rounded-xl">
-          {" "}
           View Profile
         </button>
       </Link>

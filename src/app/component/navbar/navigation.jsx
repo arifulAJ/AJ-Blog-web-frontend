@@ -148,7 +148,7 @@ const NavigationBar = () => {
                     className="px-2 py-1 rounded  "
                     value={searchQuery}
                     onChange={handleSearchInputChange}
-                  />{" "}
+                  />
                   {/* <button type="submit">Submit</button> */}
                 </form>
               </li>
@@ -167,7 +167,7 @@ const NavigationBar = () => {
                     onClick={() =>
                       setIsProfilePopupVisible(!isProfilePopupVisible)
                     }
-                  />{" "}
+                  />
                 </li>
               ) : undefined}
             </ul>
