@@ -9,7 +9,7 @@ const FeaturePostSection = () => {
 
   useEffect(() => {
     const apiUrl =
-      "http://localhost:5000/api/v1/articles?page=1&limit=20&sort_type=dec&sort_by=updatedAt";
+      "https://ar-blog-api.onrender.com/api/v1/articles?page=1&limit=20&sort_type=dec&sort_by=updatedAt";
 
     fetch(apiUrl)
       .then((response) => response.json())

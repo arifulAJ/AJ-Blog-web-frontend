@@ -62,7 +62,7 @@ const NavigationBar = () => {
     // Implement your search logic here using the searchQuery state
     try {
       const response = await fetch(
-        `http://localhost:5000/api/v1/articles?page=1&limit=5&sort_type=dec&sort_by=title&search=${searchQuery}`,
+        `https://ar-blog-api.onrender.com/api/v1/articles?page=1&limit=5&sort_type=dec&sort_by=title&search=${searchQuery}`,
         { cache: "no-cache" }
       );
 
@@ -80,7 +80,7 @@ const NavigationBar = () => {
     console.log("Search query:", searchQuery);
     setSearchQuery("");
   };
-
+  console.log(isToken, "nabe bar");
   return (
     <header className="pl-2 md:px-14 bg-hover-effect">
       <nav className="p-2">

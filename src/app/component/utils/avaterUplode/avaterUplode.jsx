@@ -49,13 +49,6 @@ function AvatarUpload({ onAvatarChange }) {
     }
   };
   const handleUpload = async () => {
-    // try {
-    //   const imgUrl = await uploadFile("image");
-    //   console.log(imgUrl);
-    //   // onAvatarChange(imgUrl);
-    // } catch (error) {
-    //   console.error(error.message);
-    // }
     // You can add additional validation or checks here
     if (useUrl && url.trim() !== "") {
       // Handle the chosen avatar (URL)

@@ -28,7 +28,7 @@ const ProfilePopup = () => {
   const handleLogout = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:5000/api/v1/auth/logout",
+        "https://ar-blog-api.onrender.com/api/v1/auth/logout",
         {
           withCredentials: true,
           cache: "no-store",
@@ -36,6 +36,7 @@ const ProfilePopup = () => {
       );
 
       if (response.data.message) {
+        console.log("ist is clicked");
         // Clear the token in your context or state
         // Assuming you have a logout function in your context
         toast.success(response.data.message);

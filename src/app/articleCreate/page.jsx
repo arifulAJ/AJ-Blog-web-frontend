@@ -55,13 +55,16 @@ const ArticleForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const res = await fetch("http://localhost:5000/api/v1/articles", {
-      method: "POST",
-      headers: headers,
-      body: JSON.stringify(formData),
-      credentials: "include",
-      cache: "no-cache",
-    });
+    const res = await fetch(
+      "https://ar-blog-api.onrender.com/api/v1/articles",
+      {
+        method: "POST",
+        headers: headers,
+        body: JSON.stringify(formData),
+        credentials: "include",
+        cache: "no-cache",
+      }
+    );
 
     const { code, data, message } = await res.json();
     if (code === 400) {

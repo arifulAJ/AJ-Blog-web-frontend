@@ -8,13 +8,16 @@ const ShowUser = () => {
   useEffect(() => {
     async function fetchUser() {
       try {
-        const res = await fetch("http://localhost:5000/api/v1/auth/signin", {
-          method: "GET", // Use GET for fetching user information
-          headers: {
-            Authorization: ` ${token}`,
-          },
-          cache: "no-cache",
-        });
+        const res = await fetch(
+          "https://ar-blog-api.onrender.com/api/v1/auth/signin",
+          {
+            method: "GET", // Use GET for fetching user information
+            headers: {
+              Authorization: ` ${token}`,
+            },
+            cache: "no-cache",
+          }
+        );
 
         if (res.ok) {
           const userData = await res.json();

@@ -1,6 +1,6 @@
 export default async function siginUpFetch(formData) {
   const response = await fetch(
-    "http://localhost:5000/api/v1/auth/signup",
+    "https://ar-blog-api.onrender.com/api/v1/auth/signup",
     { cache: "no-cache" },
     {
       method: "POST",

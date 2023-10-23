@@ -67,7 +67,7 @@ const SignUPPage = () => {
     try {
       // Send the form data to your server or API
       const response = await fetch(
-        "http://localhost:5000/api/v1/auth/signup",
+        "https://ar-blog-api.onrender.com/api/v1/auth/signup",
 
         {
           method: "POST",
@@ -81,6 +81,7 @@ const SignUPPage = () => {
       );
 
       const responsData = await response.json();
+      console.log(responsData);
 
       setIsUsed(responsData.data);
       if (response.ok) {
@@ -91,7 +92,7 @@ const SignUPPage = () => {
 
         setFormData(initialFormData);
         setError({});
-        window.location.reload();
+        // window.location.reload();
       } else {
         // Signup failed, handle errors here
         const userData = await response.json();
