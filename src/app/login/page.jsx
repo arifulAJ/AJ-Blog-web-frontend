@@ -62,7 +62,7 @@ const LoginPage = () => {
           },
           body: JSON.stringify(formData),
           credentials: "include",
-          mode: "no-cors",
+
           cache: "no-cache",
         }
       );
