@@ -2,7 +2,7 @@
 import { useState } from "react";
 
 import Head from "next/head";
-
+import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { toast } from "react-hot-toast";
@@ -79,7 +79,10 @@ const SignUPPage = () => {
           cache: "no-cache",
         }
       );
+      const token = response.data.token;
 
+      // Set the Authorization header for all subsequent requests
+      axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
       const responsData = await response.json();
       console.log(responsData);
 

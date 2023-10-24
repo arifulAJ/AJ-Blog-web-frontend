@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 import { toast } from "react-hot-toast";
+import axios from "axios";
 
 const initialUser = {
   email: "",
@@ -66,7 +67,10 @@ const LoginPage = () => {
           cache: "no-cache",
         }
       );
+      const token = response.data.token;
 
+      // Set the Authorization header for all subsequent requests
+      axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
       const { code, message, data } = await response.json();
       console.log(message, data);
       if (response.status === 200 && code === 200) {
