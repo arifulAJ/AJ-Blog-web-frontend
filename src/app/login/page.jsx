@@ -112,6 +112,7 @@ const LoginPage = () => {
 
         if (code === 200) {
           // Successfully logged in, save the token as a cookie
+
           document.cookie = `_vercel_jwt=${data.token}; Secure; HttpOnly; SameSite=None; Path=/`;
 
           // Redirect to the home page or perform any other actions
