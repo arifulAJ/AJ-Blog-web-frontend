@@ -53,6 +53,44 @@ const LoginPage = () => {
     // https://ar-blog-api.onrender.com/api/v1/auth/signin
     // http://localhost:5000/api/v1/auth/signin
 
+    // try {
+    //   const response = await fetch(
+    //     "https://ar-blog-api.onrender.com/api/v1/auth/signin",
+    //     {
+    //       method: "POST",
+    //       headers: {
+    //         "Content-Type": "application/json",
+    //       },
+    //       body: JSON.stringify(formData),
+    //       credentials: "include",
+
+    //       cache: "no-cache",
+    //     }
+    //   );
+    //   // Log response headers, including cookies
+    //   console.log("Response Headers:", response.headers);
+    //   const { code, message, data } = await response.json();
+    //   console.log(message, data);
+    //   if (response.status === 200 && code === 200) {
+    //     toast.success(message);
+
+    //     router.push("/home");
+    //     // window.location.reload();
+    //   } else if (response.status === 400) {
+    //     setTypeError("Validation Error");
+    //     toast.error(message);
+    //     console.error("Validation Errors:", message);
+    //   } else if (response.status === 401) {
+    //     setTypeError("Authentication Failed");
+    //     toast.error(message);
+    //   } else {
+    //     console.error("Authentication failed:", response.status);
+    //   }
+    // } catch (e) {
+    //   console.error("Error:", e);
+
+    //   toast.error("An error occurred.");
+    // }
     try {
       const response = await fetch(
         "https://ar-blog-api.onrender.com/api/v1/auth/signin",
@@ -63,31 +101,35 @@ const LoginPage = () => {
           },
           body: JSON.stringify(formData),
           credentials: "include",
-
           cache: "no-cache",
         }
       );
 
-      const { code, message, data } = await response.json();
-      console.log(message, data);
-      if (response.status === 200 && code === 200) {
-        toast.success(message);
+      // Check if the response status is OK (200)
+      if (response.status === 200) {
+        // Parse the response JSON data
+        const { code, message, data } = await response.json();
 
-        router.push("/home");
-        // window.location.reload();
-      } else if (response.status === 400) {
-        setTypeError("Validation Error");
-        toast.error(message);
-        console.error("Validation Errors:", message);
-      } else if (response.status === 401) {
-        setTypeError("Authentication Failed");
-        toast.error(message);
+        if (code === 200) {
+          // Successfully logged in, save the token as a cookie
+          document.cookie = `_vercel_jwt=${data.token}; Secure; HttpOnly; SameSite=None; Path=/`;
+
+          // Redirect to the home page or perform any other actions
+          toast.success(message);
+          router.push("/home");
+        } else {
+          // Handle other cases, such as validation errors or authentication failures
+          console.error("Authentication failed:", message);
+          toast.error(message);
+        }
       } else {
+        // Handle response status other than 200 (e.g., 401, 400, etc.)
         console.error("Authentication failed:", response.status);
+        toast.error("Authentication failed.");
       }
     } catch (e) {
+      // Handle unexpected errors
       console.error("Error:", e);
-
       toast.error("An error occurred.");
     }
   };
