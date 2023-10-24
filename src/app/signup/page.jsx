@@ -2,7 +2,7 @@
 import { useState } from "react";
 
 import Head from "next/head";
-import axios from "axios";
+
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { toast } from "react-hot-toast";
@@ -63,7 +63,7 @@ const SignUPPage = () => {
     e.preventDefault();
 
     // Validation logic can be added here
-
+    // https://ar-blog-api.onrender.com/api/v1/auth/signup
     try {
       // Send the form data to your server or API
       const response = await fetch(
@@ -79,10 +79,8 @@ const SignUPPage = () => {
           cache: "no-cache",
         }
       );
-      const token = response.data.token;
 
       // Set the Authorization header for all subsequent requests
-      axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
       const responsData = await response.json();
       console.log(responsData);
 

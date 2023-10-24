@@ -67,10 +67,7 @@ const LoginPage = () => {
           cache: "no-cache",
         }
       );
-      const token = response.data.token;
 
-      // Set the Authorization header for all subsequent requests
-      axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
       const { code, message, data } = await response.json();
       console.log(message, data);
       if (response.status === 200 && code === 200) {
