@@ -74,7 +74,7 @@ const LoginPage = () => {
         toast.success(message);
 
         router.push("/home");
-        window.location.reload();
+        // window.location.reload();
       } else if (response.status === 400) {
         setTypeError("Validation Error");
         toast.error(message);
