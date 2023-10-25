@@ -22,7 +22,7 @@ import axios from "axios";
 // }
 export async function getTokenFromServer() {
   // https://ar-blog-api.onrender.com/api/v1/auth/token
-  // "http://localhost:5000/api/v1/auth/token"
+  // "http://localhost:8080/api/v1/auth/token"
   try {
     const response = await axios.post(
       "https://ar-blog-api.onrender.com/api/v1/auth/token",

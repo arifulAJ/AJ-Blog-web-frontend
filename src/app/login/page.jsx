@@ -51,7 +51,7 @@ const LoginPage = () => {
       return;
     }
     // https://ar-blog-api.onrender.com/api/v1/auth/signin
-    // http://localhost:5000/api/v1/auth/signin
+    // http://localhost:8080/api/v1/auth/signin
 
     // try {
     //   const response = await fetch(
@@ -92,6 +92,42 @@ const LoginPage = () => {
     //   toast.error("An error occurred.");
     // }
     try {
+      // const response = await fetch(
+      //   "https://ar-blog-api.onrender.com/api/v1/auth/signin",
+      //   {
+      //     method: "POST",
+      //     headers: {
+      //       "Content-Type": "application/json",
+      //     },
+      //     body: JSON.stringify(formData),
+      //     credentials: "include",
+      //     cache: "no-cache",
+      //   }
+      // );
+
+      // // Check if the response status is OK (200)
+      // if (response.status === 200) {
+      //   // Parse the response JSON data
+      //   const { code, message, data } = await response.json();
+
+      //   if (code === 200) {
+      //     // Successfully logged in, save the token as a cookie
+
+      //     console.log(data);
+
+      //     // Redirect to the home page or perform any other actions
+      //     toast.success(message);
+      //     router.push("/home");
+      //   } else {
+      //     // Handle other cases, such as validation errors or authentication failures
+      //     console.error("Authentication failed:", message);
+      //     toast.error(message);
+      //   }
+      // } else {
+      //   // Handle response status other than 200 (e.g., 401, 400, etc.)
+      //   console.error("Authentication failed:", response.status);
+      //   toast.error("Authentication failed.");
+      // }
       const response = await fetch(
         "https://ar-blog-api.onrender.com/api/v1/auth/signin",
         {
@@ -110,12 +146,20 @@ const LoginPage = () => {
         // Parse the response JSON data
         const { code, message, data } = await response.json();
 
+        // Check if the response headers contain the Set-Cookie header
+        const setCookieHeader = response.headers.get("set-cookie");
+        console.log(setCookieHeader, "why this is not working");
+
+        if (setCookieHeader) {
+          // Extract the token from the Set-Cookie header
+          const token = setCookieHeader.split(";")[0].split("=")[1];
+
+          // Now, you have the token, and you can handle it as needed
+          console.log("Token from Set-Cookie header:", token);
+        }
+
         if (code === 200) {
-          // Successfully logged in, save the token as a cookie
-
-          document.cookie = `_vercel_jwt=${data.token}; Secure; HttpOnly; SameSite=None; Path=/`;
-
-          // Redirect to the home page or perform any other actions
+          // Successfully logged in, you can handle the token here
           toast.success(message);
           router.push("/home");
         } else {
