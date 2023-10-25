@@ -1,5 +1,6 @@
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
+import { getTokenFromServer } from "../tokenvarifay/tokenApi";
 
 const withPrivateRoute = (WrappedComponent) => {
   return function PrivateRouteWrapper(props) {
