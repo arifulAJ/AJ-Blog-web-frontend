@@ -20,10 +20,7 @@ const NavigationBar = () => {
   const [isToken, setIsToken] = useState(null);
   const [isProfilePopupVisible, setIsProfilePopupVisible] = useState(false);
   const router = useRouter();
-  useEffect(() => {
-    // Log the value of cookies when the component is mounted
-    console.log(document.cookie, "this is cokkies ");
-  }, []);
+
   useEffect(() => {
     getTokenFromServer()
       .then((fetchedToken) => {
