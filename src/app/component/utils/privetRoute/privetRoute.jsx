@@ -1,5 +1,5 @@
+import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
-import { useRouter } from "next/router";
 
 const withPrivateRoute = (WrappedComponent) => {
   return function PrivateRouteWrapper(props) {
