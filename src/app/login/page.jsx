@@ -6,7 +6,7 @@ import Link from "next/link";
 
 import { toast } from "react-hot-toast";
 import axios from "axios";
-
+const basurl = process.env.BASE_URL;
 const initialUser = {
   email: "",
   password: "",
@@ -128,18 +128,15 @@ const LoginPage = () => {
       //   console.error("Authentication failed:", response.status);
       //   toast.error("Authentication failed.");
       // }
-      const response = await fetch(
-        "https://ar-blog-api.onrender.com/api/v1/auth/signin",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
-          credentials: "include",
-          cache: "no-cache",
-        }
-      );
+      const response = await fetch(`${basurl}/api/v1/auth/signin`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+        credentials: "include",
+        cache: "no-cache",
+      });
 
       // Check if the response status is OK (200)
       if (response.status === 200) {

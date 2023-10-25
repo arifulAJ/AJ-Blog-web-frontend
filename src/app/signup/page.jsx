@@ -6,7 +6,7 @@ import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { toast } from "react-hot-toast";
-
+const basurl = process.env.BASE_URL;
 const initialFormData = {
   name: "",
   email: "",
@@ -67,7 +67,7 @@ const SignUPPage = () => {
     try {
       // Send the form data to your server or API
       const response = await fetch(
-        "https://ar-blog-api.onrender.com/api/v1/auth/signup",
+        `${basurl}/api/v1/auth/signup`,
 
         {
           method: "POST",
