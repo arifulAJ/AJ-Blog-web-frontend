@@ -1,7 +1,7 @@
 // import React, { createContext, useContext, useState, useEffect } from "react";
 // import { getTokenFromServer } from "./component/utils/tokenvarifay/tokenApi";
 
-// if i need to add  context api i can use this
+// // if i need to add  context api i can use this
 
 // const AuthContext = createContext();
 

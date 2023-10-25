@@ -253,4 +253,4 @@ const ArticleForm = () => {
   );
 };
 
-export default ArticleForm;
+export default withPrivateRoute(ArticleForm);
