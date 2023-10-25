@@ -1,6 +1,7 @@
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { getTokenFromServer } from "../tokenvarifay/tokenApi";
+import Link from "next/link";
 
 const withPrivateRoute = (WrappedComponent) => {
   return function PrivateRouteWrapper(props) {
@@ -26,7 +27,12 @@ const withPrivateRoute = (WrappedComponent) => {
       return <WrappedComponent {...props} />; // Render the protected content if the token is present
     } else {
       // You can also show a loading spinner or a message here while checking the token
-      router.push("/login");
+      return (
+        <p>
+          You are not permitted to access this page. Please{" "}
+          <Link href="/login">login</Link> to continue.
+        </p>
+      );
     }
   };
 };
