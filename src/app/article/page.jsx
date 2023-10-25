@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import withPrivateRoute from "../component/utils/privetRoute/privetRoute";
 
 const AllArticle = () => {
   const [file, setFile] = useState(null);
@@ -58,4 +59,4 @@ const AllArticle = () => {
   );
 };
 
-export default AllArticle;
+export default withPrivateRoute(AllArticle);
