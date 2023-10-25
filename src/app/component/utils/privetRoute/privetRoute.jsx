@@ -20,7 +20,7 @@ const withPrivateRoute = (WrappedComponent) => {
         })
         .catch((error) => {
           console.error(error);
-          router.push("/error"); // Handle errors appropriately
+          router.push("/login"); // Handle errors appropriately
         });
     }, [router]);
 
@@ -28,7 +28,7 @@ const withPrivateRoute = (WrappedComponent) => {
       return <WrappedComponent {...props} />; // Render the protected content if the token is present
     } else {
       // You can also show a loading spinner or a message here while checking the token
-      return <LoginPage />;
+      return null;
     }
   };
 };
