@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import AvatarUpload from "../component/utils/avaterUplode/avaterUplode";
-
+import withPrivateRoute from "../component/utils/privetRoute/privetRoute";
 import { getTokenFromServer } from "../component/utils/tokenvarifay/tokenApi";
 import toast from "react-hot-toast";
 
