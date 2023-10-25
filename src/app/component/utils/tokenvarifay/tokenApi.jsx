@@ -25,9 +25,13 @@ export async function getTokenFromServer() {
   // https://ar-blog-api.onrender.com/api/v1/auth/token
   // "http://localhost:8080/api/v1/auth/token"
   try {
-    const response = await axios.post(`${basurl}/api/v1/auth/token`, null, {
-      withCredentials: true,
-    });
+    const response = await axios.post(
+      `https://ar-blog-api.onrender.com/api/v1/auth/token`,
+      null,
+      {
+        withCredentials: true,
+      }
+    );
 
     console.log("Response status:", response.status);
     console.log("Response data:", response.data);

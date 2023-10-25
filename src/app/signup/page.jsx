@@ -67,7 +67,7 @@ const SignUPPage = () => {
     try {
       // Send the form data to your server or API
       const response = await fetch(
-        `${basurl}/api/v1/auth/signup`,
+        `https://ar-blog-api.onrender.com/api/v1/auth/signup`,
 
         {
           method: "POST",
