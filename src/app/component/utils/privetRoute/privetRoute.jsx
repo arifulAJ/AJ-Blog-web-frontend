@@ -26,7 +26,7 @@ const withPrivateRoute = (WrappedComponent) => {
       return <WrappedComponent {...props} />; // Render the protected content if the token is present
     } else {
       // You can also show a loading spinner or a message here while checking the token
-      return null;
+      router.push("/login");
     }
   };
 };
