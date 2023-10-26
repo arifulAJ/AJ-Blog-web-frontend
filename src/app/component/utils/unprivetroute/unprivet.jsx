@@ -1,7 +1,8 @@
 "use cleint";
-import { useRouter } from "next/router";
+
 import React, { useEffect, useState } from "react";
 import { getTokenFromServer } from "../tokenvarifay/tokenApi";
+import { useRouter } from "next/navigation";
 
 const NoTokenRoute = ({ children }) => {
   const [isToken, setIsToken] = useState(false);
