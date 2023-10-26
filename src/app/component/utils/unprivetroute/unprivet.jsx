@@ -1,4 +1,4 @@
-"use cleint";
+"use client";
 import React, { useEffect, useState } from "react";
 import { getTokenFromServer } from "../tokenvarifay/tokenApi";
 import { useRouter } from "next/navigation";
