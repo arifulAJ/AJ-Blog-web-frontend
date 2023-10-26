@@ -6,6 +6,7 @@ import Link from "next/link";
 
 import { toast } from "react-hot-toast";
 import NoTokenRoute from "../component/utils/unprivetroute/unprivet";
+import withNoTokenRoute from "../component/utils/unprivetroute/unprivet";
 
 const initialUser = {
   email: "",
@@ -175,4 +176,4 @@ const LoginPage = () => {
   );
 };
 
-export default NoTokenRoute(LoginPage);
+export default withNoTokenRoute(LoginPage);

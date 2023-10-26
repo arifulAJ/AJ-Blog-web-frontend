@@ -20,7 +20,7 @@ const withPrivateRoute = (WrappedComponent) => {
         })
         .catch((error) => {
           console.error(error);
-          router.push("/login"); // Handle errors appropriately
+          // router.push("/login"); // Handle errors appropriately
         });
     }, [router]);
 

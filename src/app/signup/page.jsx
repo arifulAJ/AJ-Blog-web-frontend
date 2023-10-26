@@ -7,6 +7,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { toast } from "react-hot-toast";
 import NoTokenRoute from "../component/utils/unprivetroute/unprivet";
+import withNoTokenRoute from "../component/utils/unprivetroute/unprivet";
 const basurl = process.env.BASE_URL;
 const initialFormData = {
   name: "",
@@ -209,4 +210,4 @@ const SignUPPage = () => {
   );
 };
 
-export default NoTokenRoute(SignUPPage);
+export default withNoTokenRoute(SignUPPage);
