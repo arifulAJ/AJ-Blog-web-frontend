@@ -1,62 +1,26 @@
-"use client";
-import React, { useState } from "react";
-import withPrivateRoute from "../component/utils/privetRoute/privetRoute";
-
-const AllArticle = () => {
-  const [file, setFile] = useState(null);
-  const [imageUrl, setImageUrl] = useState(""); // New state to store the image URL
-  const [response, setResponse] = useState("");
-
-  const handleFileChange = (e) => {
-    const selectedFile = e.target.files[0];
-    setFile(selectedFile);
-  };
-
-  const handleUpload = async () => {
-    setResponse("Uploading...");
-
-    if (!file) {
-      setResponse("Please select an image to upload.");
-      return;
-    }
-
-    const formData = new FormData();
-    formData.append("file", file);
-    formData.append("upload_preset", "image_preset");
-
-    try {
-      const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_NAME; // Replace with your Cloudinary cloud name
-      const apiUrl = `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`;
-
-      const response = await fetch(apiUrl, {
-        method: "POST",
-        body: formData,
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        const secureUrl = data.secure_url; // Extract the image URL from the response
-        setImageUrl(secureUrl); // Store the image URL in state
-        setResponse(`Image uploaded successfully. Secure URL: ${secureUrl}`);
-      } else {
-        setResponse(`Error: ${response.status} - ${response.statusText}`);
-      }
-    } catch (error) {
-      setResponse(`Error: ${error.message}`);
-    }
-  };
+import React from "react";
+import getAllArticlesPagination from "../component/libs/getAllArticlesPagination";
+import ArticleQuearyCard from "../component/ui/articlesQuearyCard/articlesQuearyCards";
+import Pagination from "../component/ui/articlesPagination/articlePagination";
+const ShowAritlcleByPagination = async () => {
+  const allarticles = await getAllArticlesPagination();
+  const articles = allarticles.articles;
 
   return (
     <div>
-      <h1>Upload an Image to Cloudinary</h1>
-      <input type="file" accept="image/*" onChange={handleFileChange} />
-      <button onClick={handleUpload}>Upload Image</button>
-      <div>{response}</div>
-
-      {/* Display the image using the retrieved URL */}
-      {imageUrl && <img src={imageUrl} alt="Uploaded Image" />}
+      <div className=" px-6 md:px-32 sm:px-12 md:py-8   ">
+        <h1 className="text-center font-semibold text-xl sm:text-2xl">
+          Welcome To Our Articles Hub
+        </h1>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-4 align-middle py-12">
+          {articles.map((article) => (
+            <ArticleQuearyCard key={article._id} article={article} />
+          ))}
+        </div>
+        <Pagination article={allarticles} />
+      </div>
     </div>
   );
 };
 
-export default withPrivateRoute(AllArticle);
+export default ShowAritlcleByPagination;

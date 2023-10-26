@@ -93,7 +93,7 @@ const SignUPPage = () => {
 
         setFormData(initialFormData);
         setError({});
-        // window.location.reload();
+        window.location.reload();
       } else {
         // Signup failed, handle errors here
         const userData = await response.json();

@@ -1,13 +1,11 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Head from "next/head";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 import { toast } from "react-hot-toast";
-import axios from "axios";
-import { getTokenFromServer } from "../component/utils/tokenvarifay/tokenApi";
-const basurl = process.env.BASE_URL;
+
 const initialUser = {
   email: "",
   password: "",
@@ -19,20 +17,6 @@ const LoginPage = () => {
   const [typeError, setTypeError] = useState("");
 
   const router = useRouter();
-  useEffect(() => {
-    getTokenFromServer()
-      .then((fetchedToken) => {
-        if (fetchedToken) {
-          // setIsToken(fetchedToken);
-          console.log(fetchedToken);
-        } else {
-          router.push("/home");
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, [router]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -101,6 +85,7 @@ const LoginPage = () => {
           // Successfully logged in, you can handle the token here
           toast.success(message);
           router.push("/home");
+          window.location.reload();
         } else {
           // Handle other cases, such as validation errors or authentication failures
           console.error("Authentication failed:", message);
