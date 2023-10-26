@@ -4,7 +4,7 @@ import ArticleQuearyCard from "../component/ui/articlesQuearyCard/articlesQueary
 import Pagination from "../component/ui/articlesPagination/articlePagination";
 const ShowAritlcleByPagination = async () => {
   const allarticles = await getAllArticlesPagination();
-  const articles = allarticles.articles;
+  const articles = await allarticles.articles;
 
   return (
     <div>
@@ -17,7 +17,7 @@ const ShowAritlcleByPagination = async () => {
             <ArticleQuearyCard key={article._id} article={article} />
           ))}
         </div>
-        {/* <Pagination article={allarticles} /> */}
+        <Pagination article={allarticles} />
       </div>
     </div>
   );
