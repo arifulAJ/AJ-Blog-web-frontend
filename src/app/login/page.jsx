@@ -49,6 +49,7 @@ const LoginPage = () => {
 
     if (!formData.email || !formData.password) {
       setError("Email and Password are required.");
+      setTypeError("");
       return;
     }
 
@@ -71,36 +72,40 @@ const LoginPage = () => {
         // Parse the response JSON data
         const { code, message, data } = await response.json();
 
-        // Check if the response headers contain the Set-Cookie header
-        const setCookieHeader = response.headers.get("set-cookie");
-        console.log(setCookieHeader, "why this is not working");
+        // // Check if the response headers contain the Set-Cookie header
+        // const setCookieHeader = response.headers.get("set-cookie");
+        // console.log(setCookieHeader, "why this is not working");
 
-        if (setCookieHeader) {
-          // Extract the token from the Set-Cookie header
-          const token = setCookieHeader.split(";")[0].split("=")[1];
+        // if (setCookieHeader) {
+        //   // Extract the token from the Set-Cookie header
+        //   const token = setCookieHeader.split(";")[0].split("=")[1];
 
-          // Now, you have the token, and you can handle it as needed
-          console.log("Token from Set-Cookie header:", token);
-        }
+        //   // Now, you have the token, and you can handle it as needed
+        //   console.log("Token from Set-Cookie header:", token);
+        // }
 
         if (code === 200) {
+          setTypeError("");
           // Successfully logged in, you can handle the token here
           toast.success(message);
+          // window.location.reload();
           router.push("/home");
-          window.location.reload();
         } else {
           // Handle other cases, such as validation errors or authentication failures
           console.error("Authentication failed:", message);
           toast.error(message);
+          setTypeError(message);
         }
       } else {
         // Handle response status other than 200 (e.g., 401, 400, etc.)
         console.error("Authentication failed:", response.status);
         toast.error("Authentication failed.");
+        setTypeError("Authentication failed");
       }
     } catch (e) {
       // Handle unexpected errors
       console.error("Error:", e);
+      setTypeError("An error occurred");
       toast.error("An error occurred.");
     }
   };
