@@ -17,7 +17,7 @@ const ShowAritlcleByPagination = async () => {
             <ArticleQuearyCard key={article._id} article={article} />
           ))}
         </div>
-        <Pagination article={allarticles} />
+        {/* <Pagination article={allarticles} /> */}
       </div>
     </div>
   );
