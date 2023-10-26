@@ -13,10 +13,10 @@ const withNoTokenRoute = (WrappedComponent) => {
         .then((fetchedToken) => {
           if (fetchedToken) {
             setIsToken(true); // Token is present
-            router.push("/home");
           } else {
             // If no token is present, navigate to the login page
             router.push("/login");
+            console.log("this with not token is hiting");
           }
         })
         .catch((error) => {
