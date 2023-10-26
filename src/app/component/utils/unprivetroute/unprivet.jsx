@@ -24,7 +24,7 @@ const withNoTokenRoute = (WrappedComponent) => {
     }, []);
 
     // If a token is present, show the protected content
-    if (isToken) {
+    if (!isToken) {
       return <WrappedComponent {...props} />;
     }
 
