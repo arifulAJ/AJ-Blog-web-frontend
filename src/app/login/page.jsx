@@ -88,7 +88,7 @@ const LoginPage = () => {
           setTypeError("");
           // Successfully logged in, you can handle the token here
           toast.success(message);
-          window.location.reload();
+          // window.location.reload();
           router.push("/home");
         } else {
           // Handle other cases, such as validation errors or authentication failures
