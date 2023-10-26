@@ -30,7 +30,7 @@ const withNoTokenRoute = (WrappedComponent) => {
     }
 
     // You can also show a loading spinner or a message here while checking the token
-    return <h1>loadding..............</h1>;
+    return router.push("/");
   };
 };
 
