@@ -43,7 +43,7 @@ const ProfilePopup = () => {
         setSuccess(true);
         router.push("/login");
         // Refresh the page after successful logout
-        window.location.reload();
+        // window.location.reload();
       }
     } catch (error) {
       console.error("Error logging out:", error);

@@ -80,7 +80,7 @@ const NavigationBar = () => {
     console.log("Search query:", searchQuery);
     setSearchQuery("");
   };
-  console.log(isToken, "nabe bar");
+
   return (
     <header className="pl-2 md:px-14 bg-hover-effect">
       <nav className="p-2">
