@@ -1,3 +1,4 @@
+"use client";
 import React, { useState } from "react";
 import getAllArticlesPagination from "../component/libs/getAllArticlesPagination";
 import ArticleQuearyCard from "../component/ui/articlesQuearyCard/articlesQuearyCards";
