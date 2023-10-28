@@ -4,7 +4,7 @@ import getAllArticlesPagination from "../component/libs/getAllArticlesPagination
 import ArticleQuearyCard from "../component/ui/articlesQuearyCard/articlesQuearyCards";
 import Pagination from "../component/ui/articlesPagination/articlePagination";
 const ShowAritlcleByPagination = async () => {
-  const num = 1;
+  let num = 1;
   const [page, setPage] = useState(num);
   const allarticles = await getAllArticlesPagination(page, 10);
   const articles = await allarticles.articles;
