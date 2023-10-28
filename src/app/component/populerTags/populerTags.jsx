@@ -2,6 +2,7 @@
 import Link from "next/link";
 import getArticleNOQuary from "../libs/getArticleNOQuary";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 const PopulerTags = () => {
   const [tagCounts, setTagCounts] = useState({}); // Use state to store tag counts
@@ -55,9 +56,11 @@ const PopulerTags = () => {
               key={tag}
               className="grid grid-cols-2 px-4 mx-16 sm:mx-2 border rounded-full"
             >
-              <img
+              <Image
                 className="rounded-full w-14 h-14"
-                src={coverImages[tag] || "default-image-url"}
+                src={coverImages[tag]}
+                width={300}
+                height={200}
                 alt={tag}
               />
               <div>
