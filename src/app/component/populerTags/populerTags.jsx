@@ -1,114 +1,72 @@
+"use client";
+import Link from "next/link";
 import getArticleNOQuary from "../libs/getArticleNOQuary";
+import { useEffect, useState } from "react";
 
-const PopulerTags = async () => {
-  const allArticle = await getArticleNOQuary();
+const PopulerTags = () => {
+  const [tagCounts, setTagCounts] = useState({}); // Use state to store tag counts
+  const [coverImages, setCoverImages] = useState({});
 
-  // Create an object to store tag counts
-  const tagCounts = {};
+  useEffect(() => {
+    const fetchArticleTags = async () => {
+      const allArticle = await getArticleNOQuary();
 
-  // Iterate through the articles and count tags
-  allArticle.forEach((article) => {
-    const tags = article.tags.split(","); // Split tags if they are separated by commas
-    tags.forEach((tag) => {
-      const trimmedTag = tag.trim(); // Trim whitespace from tags
-      if (trimmedTag in tagCounts) {
-        tagCounts[trimmedTag]++;
-      } else {
-        tagCounts[trimmedTag] = 1;
-      }
-    });
-  });
+      // Create an object to store tag counts and cover images
+      const counts = {};
+      const covers = {};
+
+      // Iterate through the articles and count tags and associate cover images
+      allArticle.forEach((article) => {
+        const tags = article.tags.split(",").map((tag) => tag.trim());
+
+        // Count tags
+        tags.forEach((tag) => {
+          if (counts[tag]) {
+            counts[tag]++;
+          } else {
+            counts[tag] = 1;
+          }
+        });
+
+        // Associate cover image with each tag
+        tags.forEach((tag) => {
+          if (!covers[tag]) {
+            covers[tag] = article.cover; // Assuming article has a 'cover' property
+          }
+        });
+      });
+
+      setTagCounts(counts);
+      setCoverImages(covers);
+    };
+
+    fetchArticleTags(); // Fetch and count tags when the component mounts
+  }, []);
 
   return (
     <div className="md:px-32 sm:px-12 md:py-1">
       <h1 className="text-center font-semibold text-xl sm:text-2xl">
-        Populer Tags
+        Popular Tags
       </h1>
-
-      <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2  gap-4 py-12 sm:py-16	">
-        {tagCounts.Nature ? (
-          <div className=" grid grid-cols-2 px-4 mx-16 sm:mx-2  border rounded-full ">
-            <div>
+      <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-4 py-12 sm:py-16">
+        {Object.keys(tagCounts).map((tag) => (
+          <Link href={`/tags/${tag}`}>
+            <div
+              key={tag}
+              className="grid grid-cols-2 px-4 mx-16 sm:mx-2 border rounded-full"
+            >
               <img
                 className="rounded-full w-14 h-14"
-                src={
-                  "https://thumbs.dreamstime.com/z/environment-earth-day-hands-trees-growing-seedlings-bokeh-green-background-female-hand-holding-tree-nature-field-gra-130247632.jpg"
-                }
-                alt="nateur"
+                src={coverImages[tag] || "default-image-url"}
+                alt={tag}
               />
+              <div>
+                <h1 className="font-semibold">{tag}</h1>
+                <p>{tagCounts[tag]} posts</p>
+              </div>
             </div>
-            <div>
-              <h1 className="font-semibold">Nature</h1>
-              <p>{tagCounts.Nature} posts</p>
-            </div>
-          </div>
-        ) : undefined}
-        {tagCounts.Adventure ? (
-          <div className=" grid grid-cols-2 px-4 mx-16 sm:mx-2  border rounded-full ">
-            <div>
-              <img
-                className="rounded-full w-14 h-14"
-                src={
-                  "https://images.unsplash.com/photo-1542359649-31e03cd4d909?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8YWR2ZW50dXJlfGVufDB8fDB8fHww&w=1000&q=80"
-                }
-                alt="Adventure"
-              />
-            </div>
-            <div>
-              <h1 className="font-semibold">Adventure</h1>
-              <p>{tagCounts.Adventure} posts</p>
-            </div>
-          </div>
-        ) : undefined}
-        {tagCounts.Food ? (
-          <div className=" grid grid-cols-2 px-4 mx-16 sm:mx-2  border rounded-full ">
-            <div>
-              <img
-                className="rounded-full w-14 h-14"
-                src={"https://ychef.files.bbci.co.uk/976x549/p04tx3m6.jpg"}
-                alt="nateur"
-              />
-            </div>
-            <div>
-              <h1 className="font-semibold">Food</h1>
-              <p>{tagCounts.Food} posts</p>
-            </div>
-          </div>
-        ) : undefined}
-        {tagCounts.Travel ? (
-          <div className=" grid grid-cols-2 px-4 mx-16 sm:mx-2  border rounded-full ">
-            <div>
-              <img
-                className="rounded-full w-14 h-14"
-                src={
-                  "https://media.istockphoto.com/id/1392494719/photo/woman-with-pink-suitcase-and-passport-with-boarding-pass-standing-on-passengers-ladder-of.jpg?s=612x612&w=0&k=20&c=MVUZvIdaUmvRKdG-B5EEGGkIVFj51jss-b6IkxqY3fg="
-                }
-                alt="Travel"
-              />
-            </div>
-            <div>
-              <h1 className="font-semibold">Travel</h1>
-              <p>{tagCounts.Travel} posts</p>
-            </div>
-          </div>
-        ) : undefined}
-        {tagCounts.Technology ? (
-          <div className=" grid grid-cols-2 px-4 mx-16 sm:mx-2  border rounded-full ">
-            <div>
-              <img
-                className="rounded-full w-14 h-14"
-                src={
-                  "https://imageio.forbes.com/specials-images/imageserve/6200b0dddcf32d3be937fa84/0x0.jpg?format=jpg&width=1200"
-                }
-                alt="technology"
-              />
-            </div>
-            <div>
-              <h1 className="font-semibold">Technology</h1>
-              <p>{tagCounts.Technology} posts</p>
-            </div>
-          </div>
-        ) : undefined}
+          </Link>
+        ))}
       </div>
     </div>
   );

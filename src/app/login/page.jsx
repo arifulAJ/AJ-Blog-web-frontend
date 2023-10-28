@@ -132,6 +132,7 @@ const LoginPage = () => {
                 id="email"
                 type="email"
                 name="email"
+                placeholder="enter your email"
                 value={formData.email}
                 onChange={handleChange}
                 required
@@ -151,6 +152,7 @@ const LoginPage = () => {
                 id="password"
                 type="password"
                 name="password"
+                placeholder="enter your password"
                 value={formData.password}
                 onChange={handleChange}
                 required

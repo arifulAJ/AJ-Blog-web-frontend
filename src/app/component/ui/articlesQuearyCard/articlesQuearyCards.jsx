@@ -5,7 +5,7 @@ import { FaRegCommentAlt } from "react-icons/fa";
 
 const ArticleQuearyCard = ({ article }) => {
   const { title, body, cover, author, tags, _id } = article;
-  console.log(_id);
+
   return (
     <div className=" border rounded-2xl hover:border-s-sky-700 hover:border-r-2 hover:rounded-none hover:border-button-color hover:bg-slate-50 duration-500">
       <Link href={`article/${_id}`}>

@@ -129,9 +129,9 @@ const NavigationBar = () => {
               <li className="hover:text-button-color">
                 <Link href="/article">Articles</Link>
               </li>
-              <li className="hover:text-button-color">
+              {/* <li className="hover:text-button-color">
                 <Link href="/contact">Contact</Link>
-              </li>
+              </li> */}
 
               {isToken ? undefined : ( // </li> //   <Profile /> // <li className="hover:text-button-color">
                 <li className="hover:text-button-color">
