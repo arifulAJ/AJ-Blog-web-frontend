@@ -51,11 +51,11 @@ const PopulerTags = () => {
       </h1>
       <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-4 py-12 sm:py-16">
         {Object.keys(tagCounts).map((tag) => (
-          <Link href={`/tags/${tag}`}>
-            <div
-              key={tag}
-              className="grid grid-cols-2 px-4 mx-16 sm:mx-2 border rounded-full"
-            >
+          <div
+            key={tag}
+            className="grid grid-cols-2 px-4 mx-16 sm:mx-2 border rounded-full"
+          >
+            <Link href={`/tags/${tag}`}>
               <Image
                 className="rounded-full w-14 h-14"
                 src={coverImages[tag]}
@@ -67,8 +67,8 @@ const PopulerTags = () => {
                 <h1 className="font-semibold">{tag}</h1>
                 <p>{tagCounts[tag]} posts</p>
               </div>
-            </div>
-          </Link>
+            </Link>
+          </div>
         ))}
       </div>
     </div>
