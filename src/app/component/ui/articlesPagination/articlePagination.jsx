@@ -62,7 +62,7 @@
 
 // export default Pagination;
 "use client";
-import Link from "next/link";
+
 import { useState, useEffect } from "react";
 import ArticleQuearyCard from "../articlesQuearyCard/articlesQuearyCards";
 
@@ -99,14 +99,12 @@ const Pagination = ({ article }) => {
 
       <div className="flex items-center justify-center space-x-4 mt-8">
         {links.prev ? (
-          <Link as={`${baseurl}${links.prev}`} href="/articles">
-            <p
-              className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700 cursor-pointer"
-              onClick={() => fetchArticles(`${baseurl}${links.prev}`)}
-            >
-              Previous
-            </p>
-          </Link>
+          <p
+            className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700 cursor-pointer"
+            onClick={() => fetchArticles(`${baseurl}${links.prev}`)}
+          >
+            Previous
+          </p>
         ) : (
           <p
             className="px-4 py-2 bg-gray-300 text-gray-600 rounded cursor-not-allowed"
