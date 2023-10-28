@@ -1,12 +1,9 @@
-"use client";
-import React, { useState } from "react";
+import React from "react";
 import getAllArticlesPagination from "../component/libs/getAllArticlesPagination";
 import ArticleQuearyCard from "../component/ui/articlesQuearyCard/articlesQuearyCards";
 import Pagination from "../component/ui/articlesPagination/articlePagination";
 const ShowAritlcleByPagination = async () => {
-  let num = 1;
-  const [page, setPage] = useState(num);
-  const allarticles = await getAllArticlesPagination(page, 10);
+  const allarticles = await getAllArticlesPagination();
   const articles = await allarticles.articles;
 
   return (
@@ -20,42 +17,7 @@ const ShowAritlcleByPagination = async () => {
             <ArticleQuearyCard key={article._id} article={article} />
           ))}
         </div>
-        {/* <Pagination article={allarticles} /> */}
-        <div className="flex items-center justify-center space-x-4 mt-8">
-          {page >= 1 ? (
-            <p
-              className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700 cursor-pointer"
-              onClick={() => setPage(num--)}
-            >
-              Previous
-            </p>
-          ) : (
-            <p
-              className="px-4 py-2 bg-gray-300 text-gray-600 rounded cursor-not-allowed"
-              disabled
-            >
-              Previous
-            </p>
-          )}
-
-          {page <= 1 ? (
-            <h1>
-              <p
-                className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700 cursor-pointer"
-                onClick={() => setPage(num++)}
-              >
-                Next
-              </p>
-            </h1>
-          ) : (
-            <p
-              className="px-4 py-2 bg-gray-300 text-gray-600 rounded cursor-not-allowed"
-              disabled
-            >
-              Next
-            </p>
-          )}
-        </div>
+        <Pagination article={allarticles} />
       </div>
     </div>
   );
