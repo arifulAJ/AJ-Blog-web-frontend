@@ -1,7 +1,7 @@
 import React from "react";
 import getAllArticlesPagination from "../component/libs/getAllArticlesPagination";
 import ArticleQuearyCard from "../component/ui/articlesQuearyCard/articlesQuearyCards";
-import Pagination from "../component/ui/articlesPagination/articlePagination";
+
 const ShowAritlcleByPagination = async () => {
   const allarticles = await getAllArticlesPagination();
   const articles = await allarticles.articles;
@@ -17,7 +17,6 @@ const ShowAritlcleByPagination = async () => {
             <ArticleQuearyCard key={article._id} article={article} />
           ))}
         </div>
-        <Pagination article={allarticles} />
       </div>
     </div>
   );
