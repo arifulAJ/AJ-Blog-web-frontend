@@ -3,7 +3,7 @@ import getAllArticlesPagination from "../component/libs/getAllArticlesPagination
 import ArticleQuearyCard from "../component/ui/articlesQuearyCard/articlesQuearyCards";
 import Pagination from "../component/ui/articlesPagination/articlePagination";
 const ShowAritlcleByPagination = async () => {
-  const allarticles = await getAllArticlesPagination();
+  const allarticles = await getAllArticlesPagination(1, 10);
   const articles = await allarticles.articles;
 
   return (

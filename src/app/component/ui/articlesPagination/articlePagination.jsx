@@ -70,36 +70,37 @@ const baseurl = "https://ar-blog-api.onrender.com";
 const Pagination = ({ article }) => {
   const links = article.links;
   const [fetchedArticles, setFetchedArticles] = useState([]);
+  const [pageinc, setPageinc] = useState(1);
 
-  const fetchArticles = async (url) => {
-    try {
-      const response = await fetch(url);
-      const data = await response.json();
-      // Set the fetched data to the state
-      setFetchedArticles(data.articles);
-    } catch (error) {
-      console.error("Error fetching articles:", error);
-    }
-  };
+  // const fetchArticles = async (url) => {
+  //   try {
+  //     const response = await fetch(url);
+  //     const data = await response.json();
+  //     // Set the fetched data to the state
+  //     setFetchedArticles(data.articles);
+  //   } catch (error) {
+  //     console.error("Error fetching articles:", error);
+  //   }
+  // };
 
-  useEffect(() => {
-    // Fetch the initial set of articles when the component mounts
-    fetchArticles(`${baseurl}${links.self}`);
-  }, []);
+  // useEffect(() => {
+  //   // Fetch the initial set of articles when the component mounts
+  //   fetchArticles(`${baseurl}${links.self}`);
+  // }, []);
 
+  // Render the fetched articles
+  // {fetchedArticles.map((article, index) => (
+  //   <div key={index}>{/* Render the article content here */}</div>
+  // )) }
   return (
     <div>
-      {/* Render the fetched articles */}
-      {fetchedArticles.map((article, index) => (
-        <div key={index}>{/* Render the article content here */}</div>
-      ))}
-
       <div className="flex items-center justify-center space-x-4 mt-8">
-        {links.prev ? (
+        {pageinc <= 1 ? (
           <Link as={`${baseurl}${links.prev}`} href="/articles">
             <p
               className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700 cursor-pointer"
-              onClick={() => fetchArticles(`${baseurl}${links.prev}`)}
+              // onClick={() => fetchArticles(`${baseurl}${links.prev}`)}
+              onClick={() => setPageinc - 1}
             >
               Previous
             </p>
@@ -113,11 +114,12 @@ const Pagination = ({ article }) => {
           </p>
         )}
 
-        {links.next ? (
+        {pageinc > 1 ? (
           <h1>
             <p
               className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700 cursor-pointer"
-              onClick={() => fetchArticles(`${baseurl}${links.next}`)}
+              // onClick={() => fetchArticles(`${baseurl}${links.next}`)}
+              onClick={() => setPageinc + 1}
             >
               Next
             </p>
@@ -131,6 +133,9 @@ const Pagination = ({ article }) => {
           </p>
         )}
       </div>
+      {/* {
+        fetchArticles.map(art=><li>{art.tags}</li>)
+      } */}
     </div>
   );
 };
