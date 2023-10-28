@@ -53,7 +53,7 @@ const PopulerTags = () => {
         {Object.keys(tagCounts).map((tag) => (
           <div
             key={tag}
-            className="grid grid-cols-2 px-4 mx-16 sm:mx-2 border rounded-full"
+            className="flex justify-between items-center px-4 mx-16 sm:mx-2 border rounded-full"
           >
             <Link href={`/tags/${tag}`}>
               <Image
