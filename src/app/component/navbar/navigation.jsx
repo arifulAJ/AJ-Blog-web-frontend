@@ -20,7 +20,7 @@ const NavigationBar = () => {
   const [isToken, setIsToken] = useState(null);
   const [isProfilePopupVisible, setIsProfilePopupVisible] = useState(false);
   const router = useRouter();
-
+  const baseurl = process.env.NEXT_PUBLIC_BASE_URL;
   useEffect(() => {
     getTokenFromServer()
       .then((fetchedToken) => {
@@ -62,8 +62,7 @@ const NavigationBar = () => {
     // Implement your search logic here using the searchQuery state
     try {
       const response = await fetch(
-        `https://ar-blog-api.onrender.com/api/v1/articles?page=1&limit=5&sort_type=dec&sort_by=title&search=${searchQuery}`,
-        { cache: "no-cache" }
+        `${baseurl}/api/v1/articles?page=1&limit=5&sort_type=dec&sort_by=title&search=${searchQuery}`
       );
 
       if (!response.ok) {
@@ -183,7 +182,9 @@ const NavigationBar = () => {
       </div> */}
         </div>
       </nav>
-      {isProfilePopupVisible && <ProfilePopup />}
+      {isProfilePopupVisible && (
+        <ProfilePopup notVisible={() => setIsProfilePopupVisible(false)} />
+      )}
     </header>
   );
 };

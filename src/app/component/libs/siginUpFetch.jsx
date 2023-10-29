@@ -1,6 +1,7 @@
 export default async function siginUpFetch(formData) {
+  const baseurl = process.env.NEXT_PUBLIC_BASE_URL;
   const response = await fetch(
-    "https://ar-blog-api.onrender.com/api/v1/auth/signup",
+    `${baseurl}/api/v1/auth/signup`,
     { cache: "no-cache" },
     {
       method: "POST",

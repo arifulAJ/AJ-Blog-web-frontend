@@ -1,10 +1,6 @@
 export default async function getAuthUser() {
-  const res = await fetch(
-    "https://ar-blog-api.onrender.com/api/v1/auth/signin",
-    {
-      cache: "no-cache",
-    }
-  )
+  const baseurl = process.env.NEXT_PUBLIC_BASE_URL;
+  const res = await fetch(`${baseurl}/api/v1/auth/signin`)
     .then((res) => res.text())
     .then((data) => {
       // Process the data as a string, not JSON

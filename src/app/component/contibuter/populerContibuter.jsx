@@ -62,8 +62,11 @@ const PopulerContibuter = async () => {
                 className=" flex flex-col justify-center items-center h-full p-3"
               >
                 <Image
-                  className="  rounded-full text-center w-36 h-36 sm:w-40 sm:h-44 object-cover "
-                  src={author.avatar}
+                  className="  rounded-full border-2 text-center w-36 h-36 sm:w-40 sm:h-44 object-cover "
+                  src={
+                    author.avatar ||
+                    "https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-portrait-176256935.jpg"
+                  }
                   width={200}
                   height={100}
                   alt={`${author.name}'s Avatar`}

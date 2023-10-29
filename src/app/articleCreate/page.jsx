@@ -17,6 +17,7 @@ const ArticleForm = () => {
   const [isToken, setIsToken] = useState(null);
 
   const [errors, setErrors] = useState({});
+  const baseurl = process.env.NEXT_PUBLIC_BASE_URL;
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -55,16 +56,13 @@ const ArticleForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const res = await fetch(
-      "https://ar-blog-api.onrender.com/api/v1/articles",
-      {
-        method: "POST",
-        headers: headers,
-        body: JSON.stringify(formData),
-        credentials: "include",
-        cache: "no-cache",
-      }
-    );
+    const res = await fetch(`${baseurl}/api/v1/articles`, {
+      method: "POST",
+      headers: headers,
+      body: JSON.stringify(formData),
+      credentials: "include",
+      cache: "no-cache",
+    });
 
     const { code, data, message } = await res.json();
     if (code === 400) {

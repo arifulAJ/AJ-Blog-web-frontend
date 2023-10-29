@@ -4,20 +4,16 @@ import { getAuthenticationToken } from "../utils/auth";
 const ShowUser = () => {
   const token = getAuthenticationToken();
   const [user, setUser] = useState(null);
-
+  const baseurl = process.env.NEXT_PUBLIC_BASE_URL;
   useEffect(() => {
     async function fetchUser() {
       try {
-        const res = await fetch(
-          "https://ar-blog-api.onrender.com/api/v1/auth/signin",
-          {
-            method: "GET", // Use GET for fetching user information
-            headers: {
-              Authorization: ` ${token}`,
-            },
-            cache: "no-cache",
-          }
-        );
+        const res = await fetch(`${baseurl}/api/v1/auth/signin`, {
+          method: "GET", // Use GET for fetching user information
+          headers: {
+            Authorization: ` ${token}`,
+          },
+        });
 
         if (res.ok) {
           const userData = await res.json();

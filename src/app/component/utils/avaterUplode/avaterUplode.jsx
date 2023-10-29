@@ -35,12 +35,12 @@ function AvatarUpload({ onAvatarChange }) {
       let cloudeName = process.env.NEXT_PUBLIC_CLOUDINARY_NAME;
 
       let resoceType = "image";
-      console.log(resoceType);
+
       let api = `https://api.cloudinary.com/v1_1/${cloudeName}/${resoceType}/upload`;
       console.log(api);
       const res = await axios.post(api, data);
       const { secure_url } = res.data;
-      console.log(secure_url);
+
       return secure_url;
     } catch (error) {
       console.error(error.message);
@@ -57,7 +57,7 @@ function AvatarUpload({ onAvatarChange }) {
       // Handle the chosen avatar (file)
       try {
         const imgUrl = await uploadFile("image");
-        console.log(imgUrl);
+
         onAvatarChange(imgUrl);
       } catch (error) {
         console.error(error.message);

@@ -1,17 +1,12 @@
 import axios from "axios";
-const basurl = process.env.BASE_URL;
 
+const baseurl = process.env.NEXT_PUBLIC_BASE_URL;
 export async function getTokenFromServer() {
-  // https://ar-blog-api.onrender.com/api/v1/auth/token
-  // "http://localhost:8080/api/v1/auth/token"
   try {
-    const response = await axios.post(
-      `https://ar-blog-api.onrender.com/api/v1/auth/token`,
-      null,
-      {
-        withCredentials: true,
-      }
-    );
+    const response = await axios.post(`${baseurl}/api/v1/auth/token`, null, {
+      withCredentials: true,
+      cache: "no-cache",
+    });
 
     // Handle the response data as needed
     const data = response.data;
@@ -29,12 +24,9 @@ export async function getTokenFromServer() {
 // A reusable function to get the token from the server
 export async function getUserbyToken() {
   try {
-    const response = await axios.get(
-      "https://ar-blog-api.onrender.com/api/v1/auth/signin",
-      {
-        withCredentials: true, // Include cookies in the request
-      }
-    );
+    const response = await axios.get(`${baseurl}/api/v1/auth/signin`, {
+      withCredentials: true, // Include cookies in the request
+    });
 
     if (response.status === 200) {
       const data = await response.data;

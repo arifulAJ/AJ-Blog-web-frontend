@@ -19,6 +19,7 @@ const LoginPage = () => {
   const [typeError, setTypeError] = useState("");
 
   const router = useRouter();
+  const baseurl = process.env.NEXT_PUBLIC_BASE_URL;
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -54,35 +55,20 @@ const LoginPage = () => {
     }
 
     try {
-      const response = await fetch(
-        `https://ar-blog-api.onrender.com/api/v1/auth/signin`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
-          credentials: "include",
-          cache: "no-cache",
-        }
-      );
+      const response = await fetch(`${baseurl}/api/v1/auth/signin`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+        credentials: "include",
+        cache: "no-cache",
+      });
 
       // Check if the response status is OK (200)
       if (response.status === 200) {
         // Parse the response JSON data
         const { code, message, data } = await response.json();
-
-        // // Check if the response headers contain the Set-Cookie header
-        // const setCookieHeader = response.headers.get("set-cookie");
-        // console.log(setCookieHeader, "why this is not working");
-
-        // if (setCookieHeader) {
-        //   // Extract the token from the Set-Cookie header
-        //   const token = setCookieHeader.split(";")[0].split("=")[1];
-
-        //   // Now, you have the token, and you can handle it as needed
-        //   console.log("Token from Set-Cookie header:", token);
-        // }
 
         if (code === 200) {
           setTypeError("");

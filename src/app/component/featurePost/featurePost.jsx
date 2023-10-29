@@ -6,10 +6,10 @@ import FeatureCardRight from "./featureCard/featureCardRight";
 
 const FeaturePostSection = () => {
   const [articles, setArticles] = useState([]);
+  const baseurl = process.env.NEXT_PUBLIC_BASE_URL;
 
   useEffect(() => {
-    const apiUrl =
-      "https://ar-blog-api.onrender.com/api/v1/articles?page=1&limit=20&sort_type=dec&sort_by=updatedAt";
+    const apiUrl = `${baseurl}/api/v1/articles?page=1&limit=20&sort_type=dec&sort_by=updatedAt`;
 
     fetch(apiUrl)
       .then((response) => response.json())

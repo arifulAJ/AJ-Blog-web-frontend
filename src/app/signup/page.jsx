@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 import { toast } from "react-hot-toast";
 import NoTokenRoute from "../component/utils/unprivetroute/unprivet";
 import withNoTokenRoute from "../component/utils/unprivetroute/unprivet";
-const basurl = process.env.BASE_URL;
+const baseurl = process.env.NEXT_PUBLIC_BASE_URL;
 const initialFormData = {
   name: "",
   email: "",
@@ -65,11 +65,11 @@ const SignUPPage = () => {
     e.preventDefault();
 
     // Validation logic can be added here
-    // https://ar-blog-api.onrender.com/api/v1/auth/signup
+
     try {
       // Send the form data to your server or API
       const response = await fetch(
-        `https://ar-blog-api.onrender.com/api/v1/auth/signup`,
+        `${baseurl}/api/v1/auth/signup`,
 
         {
           method: "POST",

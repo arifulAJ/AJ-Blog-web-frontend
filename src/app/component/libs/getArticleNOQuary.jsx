@@ -1,11 +1,7 @@
 export default async function getArticleNOQuary() {
-  // "http://localhost:8080/api/v1/auth/token"
-  const res = await fetch(
-    "https://ar-blog-api.onrender.com/api/v1/articles/all",
-    {
-      cache: "no-cache",
-    }
-  );
+  const baseurl = process.env.NEXT_PUBLIC_BASE_URL;
+
+  const res = await fetch(`${baseurl}/api/v1/articles/all`);
 
   if (!res.ok) {
     throw Error("this article are not abiable here ");

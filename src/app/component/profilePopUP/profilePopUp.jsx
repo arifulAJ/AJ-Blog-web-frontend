@@ -7,11 +7,11 @@ import { getUserbyToken } from "../utils/tokenvarifay/tokenApi";
 import { useRouter } from "next/navigation";
 import { toast } from "react-hot-toast";
 
-const ProfilePopup = () => {
+const ProfilePopup = ({ notVisible }) => {
   const [avatar, setAvatar] = useState({});
   const [success, setSuccess] = useState(false);
   const router = useRouter();
-
+  const baseurl = process.env.NEXT_PUBLIC_BASE_URL;
   useEffect(() => {
     const fetchUserData = async () => {
       try {
@@ -27,13 +27,10 @@ const ProfilePopup = () => {
 
   const handleLogout = async () => {
     try {
-      const response = await axios.get(
-        "https://ar-blog-api.onrender.com/api/v1/auth/logout",
-        {
-          withCredentials: true,
-          cache: "no-store",
-        }
-      );
+      const response = await axios.get(`${baseurl}/api/v1/auth/logout`, {
+        withCredentials: true,
+        cache: "no-cache",
+      });
 
       if (response.data.message) {
         console.log("ist is clicked");
@@ -54,7 +51,7 @@ const ProfilePopup = () => {
   return (
     <div className="absolute sm:right-0 mt-2 w-48 bg-button-color border border-gray-300 rounded p-2 pt-6 shadow-md z-50">
       <Image
-        className="rounded-full border ml-10 w-20 h-20 overflow-hidden "
+        className="rounded-full border-2 ml-10 w-20 h-20 overflow-hidden "
         src={
           avatar.avatar ||
           "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/OOjs_UI_icon_userAvatar-progressive.svg/768px-OOjs_UI_icon_userAvatar-progressive.svg.png"
@@ -64,7 +61,7 @@ const ProfilePopup = () => {
         alt="profile"
       />
       <h4 className="text-center  text-white">{avatar.name}</h4>
-      <Link href="/profile" className="block py-1">
+      <Link href="/profile" className="block py-1" onClick={() => notVisible()}>
         <button className="bg-black hover:bg-green-900 text-white px-4 py-1 font-semibold ml-8 rounded-xl">
           View Profile
         </button>
@@ -72,6 +69,7 @@ const ProfilePopup = () => {
       <Link
         href="/dashboard"
         className="block py-1 font-semibold text-white hover:text-gray-950"
+        onClick={() => notVisible()}
       >
         Dashboard <hr />
       </Link>
@@ -79,6 +77,7 @@ const ProfilePopup = () => {
       <Link
         href="/articleCreate"
         className="block py-1 font-semibold text-white hover:text-gray-950"
+        onClick={() => notVisible()}
       >
         Create Article <hr />
       </Link>
