@@ -139,7 +139,7 @@ function UserImageUpload({ onAvatarChange }) {
     const data = new FormData();
 
     if (file && file instanceof File) {
-      if (file.size > 200000) {
+      if (file.size > 800000) {
         toast.error("Your file is too big. Maximum file size is 300 KB.");
         return;
       }
