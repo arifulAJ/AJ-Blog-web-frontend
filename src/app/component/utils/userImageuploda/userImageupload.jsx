@@ -80,7 +80,6 @@ function UserImageUpload({ onAvatarChange, initialAvatarUrl }) {
             height={100}
             width={100}
             alt="Avatar"
-            style={{ cursor: "pointer" }}
             className="w-32 h-32 rounded-full border-2 border-hover-effect  relative"
           />
           <div className="absolute bottom-0 right-0 px-4 py-3 text-right">

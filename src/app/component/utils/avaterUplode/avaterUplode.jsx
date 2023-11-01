@@ -187,24 +187,33 @@ function UserImageUpload({ onAvatarChange }) {
       <input
         type="file"
         ref={fileInputRef}
-        style={{ display: "none" }}
+        style={{
+          opacity: 0,
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          cursor: "pointer",
+        }}
         accept="image/*"
         onChange={handleFileChange}
       />
 
       <div className="h-32 w-44 relative text-right py-2">
-        <div className="relative" onClick={handleImageClick}>
-          <Image
-            src={
-              avatarUrl ||
-              "https://media.sproutsocial.com/uploads/2018/04/Facebook-Cover-Photo-Size.png"
-            }
-            alt="Avatar"
-            style={{ cursor: "pointer" }}
-            height={100}
-            width={100}
-            className="w-44 h-32  border-2 border-hover-effect relative"
-          />
+        <div className="relative">
+          <button onClick={handleImageClick}>
+            <Image
+              src={
+                avatarUrl ||
+                "https://media.sproutsocial.com/uploads/2018/04/Facebook-Cover-Photo-Size.png"
+              }
+              alt="Avatar"
+              height={100}
+              width={100}
+              className="w-44 h-32  border-2 border-hover-effect relative"
+            />
+          </button>
           <div className="absolute bottom-0 right-0 px-4 py-3 text-right">
             <FaCamera
               className="text-black z-30 text-2xl"
