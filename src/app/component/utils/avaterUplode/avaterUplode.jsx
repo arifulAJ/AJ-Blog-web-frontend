@@ -202,7 +202,7 @@ function UserImageUpload({ onAvatarChange }) {
 
       <div className="h-32 w-44 relative text-right py-2">
         <div className="relative">
-          <button onClick={handleImageClick}>
+          <button onClick={handleImageClick} onTouchStart={handleImageClick}>
             <Image
               src={
                 avatarUrl ||
