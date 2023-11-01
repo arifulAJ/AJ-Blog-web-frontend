@@ -67,7 +67,6 @@ const ArticleForm = () => {
     const { code, data, message } = await res.json();
     if (code === 400) {
       setErrors(data);
-      console.error(message);
     }
     if (code === 201) {
       setFormData(initialData);
@@ -190,7 +189,7 @@ const ArticleForm = () => {
               htmlFor="cover"
               className="block text-sm font-medium text-gray-700"
             >
-              <h1 className="text-2xl">Cover</h1>
+              <h1 className="text-2xl">Upload cover image</h1>
             </label>
             <div className="mb-4">
               <label
