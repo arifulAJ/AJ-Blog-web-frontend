@@ -22,7 +22,7 @@ const withNoTokenRoute = (WrappedComponent) => {
         .catch((error) => {
           console.error(error);
         });
-    }, []);
+    }, [router]);
 
     // If a token is present, show the protected content
     if (!isToken) {

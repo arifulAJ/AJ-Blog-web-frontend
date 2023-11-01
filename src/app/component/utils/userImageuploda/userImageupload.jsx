@@ -1,4 +1,5 @@
 import axios from "axios";
+import Image from "next/image";
 import React, { useState, useRef, useEffect } from "react";
 import { toast } from "react-hot-toast";
 import { FaCamera, FaEdit } from "react-icons/fa";
@@ -69,16 +70,18 @@ function UserImageUpload({ onAvatarChange, initialAvatarUrl }) {
         onChange={handleFileChange}
       />
 
-      <div className="h-32 w-32 relative text-right">
-        <div className="relative" onClick={handleImageClick}>
-          <img
+      <div className="h-32 w-32  relative text-right">
+        <div className="relative " onClick={handleImageClick}>
+          <Image
             src={
               avatarUrl ||
               "https://res.cloudinary.com/arifulislam/image/upload/v1698799492/avatar-default-symbolic-icon-2048x1949-pq9uiebg_mizdd3.png"
             }
+            height={100}
+            width={100}
             alt="Avatar"
             style={{ cursor: "pointer" }}
-            className="w-32 h-32 rounded-full border-2 border-hover-effect relative"
+            className="w-32 h-32 rounded-full border-2 border-hover-effect  relative"
           />
           <div className="absolute bottom-0 right-0 px-4 py-3 text-right">
             <FaCamera

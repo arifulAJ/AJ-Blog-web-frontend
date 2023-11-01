@@ -30,7 +30,7 @@ const FeaturePostSection = () => {
       .catch((error) => {
         console.error("Error fetching articles:", error);
       });
-  }, []);
+  }, [baseurl]);
 
   return (
     <div className="pl-2 md:px-32 py-16">

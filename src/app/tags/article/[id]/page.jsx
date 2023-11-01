@@ -22,10 +22,16 @@ const showTagsArticle = async ({ params }) => {
         </h1>
       </div>
       <div className="flex pt-3 pb-8  ">
-        <img
-          className="rounded-full w-12 h-12  border"
-          src={findUserById.avatar}
+        <Image
+          className="rounded-full w-16 h-16  border overflow-hidden  "
+          src={
+            findUserById.avatar ||
+            "https://res.cloudinary.com/arifulislam/image/upload/v1698799492/avatar-default-symbolic-icon-2048x1949-pq9uiebg_mizdd3.png"
+          }
+          height={400}
+          width={400}
           alt="author"
+          style={{ objectFit: "cover", objectPosition: "center" }}
         />
         <div className="px-2 text-slate-500">
           <h1 className="uppercase">by {findArticleById.author.name}</h1>

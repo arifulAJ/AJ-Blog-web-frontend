@@ -28,7 +28,7 @@ const ShowUser = () => {
     }
 
     fetchUser();
-  }, [token]);
+  }, [token, baseurl]);
 
   return (
     <div>

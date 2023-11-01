@@ -128,6 +128,7 @@ import axios from "axios";
 import React, { useState, useRef } from "react";
 import { toast } from "react-hot-toast";
 import { FaCamera } from "react-icons/fa";
+import Image from "next/image";
 
 function UserImageUpload({ onAvatarChange }) {
   const [isUploading, setIsUploading] = useState(false);
@@ -193,13 +194,15 @@ function UserImageUpload({ onAvatarChange }) {
 
       <div className="h-32 w-44 relative text-right py-2">
         <div className="relative" onClick={handleImageClick}>
-          <img
+          <Image
             src={
               avatarUrl ||
               "https://media.sproutsocial.com/uploads/2018/04/Facebook-Cover-Photo-Size.png"
             }
             alt="Avatar"
             style={{ cursor: "pointer" }}
+            height={100}
+            width={100}
             className="w-44 h-32  border-2 border-hover-effect relative"
           />
           <div className="absolute bottom-0 right-0 px-4 py-3 text-right">
