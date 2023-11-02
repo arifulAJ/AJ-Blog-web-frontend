@@ -8,6 +8,7 @@ const PopulerContibuter = async () => {
   // Fetch articles and authors
   const allArticles = await getArticleNOQuary();
   const allUsers = await getAllUseeOfAuthor();
+
   // Function to count articles by author
   function countArticlesByAuthor(articles) {
     const authorArticleCounts = {};
