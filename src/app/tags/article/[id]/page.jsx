@@ -12,7 +12,7 @@ const showTagsArticle = async ({ params }) => {
   const created = new Date(findArticleById.createdAt);
   const createdAt = created.toLocaleString();
   return (
-    <div className=" px-2 sm:px-32 md:px-24 py-12">
+    <div className=" px-4 sm:px-32 md:px-24 py-12">
       <div className="py-3">
         <button className="bg-button-color text-white font-semibold  px-5 rounded-full">
           {findArticleById.tags}
@@ -50,8 +50,8 @@ const showTagsArticle = async ({ params }) => {
           Uploded by, {findArticleById.author.name}
         </p>
       </div>
-      <div className="py-12">
-        <p className="text-2xl text-slate-700">{findArticleById.body}</p>
+      <div className="py-4 sm:py-12 px-1">
+        <p className="sm:text-2xl text-slate-700">{findArticleById.body}</p>
       </div>
       <ShowComments />
     </div>

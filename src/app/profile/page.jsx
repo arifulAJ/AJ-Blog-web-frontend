@@ -96,6 +96,7 @@ const Profile = () => {
 
         toast.success(user.message);
         setIsVisiable(false);
+        window.location.reload();
       }
       if (response.status === 409) {
         toast.error(user.message);

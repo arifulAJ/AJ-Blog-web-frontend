@@ -59,6 +59,7 @@ const PopulerTags = () => {
       <h1 className="text-center font-semibold text-xl sm:text-2xl">
         Popular Tags
       </h1>
+
       <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-4 py-12 sm:py-16">
         {Object.keys(tagCounts).map((tag) => (
           <div key={tag} className="grid grid-col sm:mx-2 border rounded-full">

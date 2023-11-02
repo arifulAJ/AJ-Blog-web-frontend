@@ -57,7 +57,7 @@ const ShowArticleByPagination = () => {
   );
 
   return (
-    <div className="py-8 md:py-12">
+    <div className="py-8 px-3 md:py-12">
       <div className="px-6 md:px-32 sm:px-12">
         <h1 className="text-center text-xl sm:text-2xl md:text-4xl font-semibold">
           Welcome To Our Articles Hub

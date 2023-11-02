@@ -3,7 +3,7 @@ import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer className="bg-alice-blue md:px-32 p-6">
+    <footer className="bg-alice-blue  md:px-32 p-6">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center">
         {/* Social Media Links */}
         <div className="mb-4 md:mb-0">
@@ -31,15 +31,15 @@ const Footer = () => {
         </div>
 
         {/* Email Subscription */}
-        <div>
+        <div className="px-4">
           <h2 className="text-xl mb-2">Subscribe to our Newsletter</h2>
           <div className="flex space-x-2">
             <input
               type="email"
               placeholder="Your email"
-              className="border rounded-l px-4 py-2 focus:outline-none focus:ring-2 focus:ring-button-color flex-grow"
+              className="border rounded-l px-4 py-2 w-16  focus:outline-none focus:ring-2 focus:ring-button-color flex-grow"
             />
-            <button className="bg-button-color text-white px-4 py-2 rounded-r hover:bg-hover-effect focus:outline-none focus:ring-2 focus:ring-button-color">
+            <button className="bg-button-color  text-white sm:px-4 py-2 rounded-r hover:bg-hover-effect focus:outline-none focus:ring-2 focus:ring-button-color">
               Subscribe
             </button>
           </div>

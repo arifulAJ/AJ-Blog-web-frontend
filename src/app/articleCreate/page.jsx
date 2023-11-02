@@ -106,7 +106,7 @@ const ArticleForm = () => {
 
   return (
     <div className="w-full bg-transparent bg-slate-300  p-2 sm:p-12">
-      <h1 className=" font-bold text-slate-700 sm:text-4xl p-3 pb-12">
+      <h1 className=" sm:font-bold text-slate-700 sm:text-4xl p-3 pb-12">
         Unleash the Boundless Power of Your Imagination Craft Captivating
         Narratives and Inspire the World with the Brilliance of Your Words
       </h1>
@@ -120,7 +120,7 @@ const ArticleForm = () => {
               htmlFor="title"
               className="block text-sm font-medium text-gray-700"
             >
-              <h1 className="text-2xl">Title</h1>
+              <h1 className=" sm:text-2xl">Title</h1>
             </label>
             <input
               type="text"
@@ -141,7 +141,7 @@ const ArticleForm = () => {
               htmlFor="body"
               className="block text-sm font-medium text-gray-700"
             >
-              <h1 className="text-2xl">Body</h1>
+              <h1 className="sm:text-2xl">Body</h1>
             </label>
             <textarea
               id="body"
@@ -161,7 +161,7 @@ const ArticleForm = () => {
               htmlFor="tags"
               className="block text-sm font-medium text-gray-700"
             >
-              <h1 className="text-2xl">Tags</h1>
+              <h1 className="sm:text-2xl">Tags</h1>
             </label>
             <select
               id="tags"
@@ -190,7 +190,7 @@ const ArticleForm = () => {
               htmlFor="cover"
               className="block text-sm font-medium text-gray-700"
             >
-              <h1 className="text-2xl">Upload cover image</h1>
+              <h1 className="sm:text-2xl">Upload cover image</h1>
             </label>
             <div className="mb-4">
               <label
@@ -206,7 +206,7 @@ const ArticleForm = () => {
           )}
           <div className="mb-4">
             <label className="block text-sm font-medium text-gray-700">
-              <h1 className="text-2xl">Status</h1>
+              <h1 className="sm:text-2xl">Status</h1>
             </label>
             <div className="mt-1">
               <label className="inline-flex items-center">

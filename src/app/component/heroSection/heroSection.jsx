@@ -15,9 +15,9 @@ const HeroSection = () => {
           <h1 className="text-hover-effect font-normal text-base pt-1 pb-1">
             AJ.Tech. Blog
           </h1>
-          <button className="bg-button-color md:px-6 md:py-4 p-2 rounded-full text-white">
+          <p className=" text-button-color font-semibold sm:text-xl pt-1 pb-1">
             Signup for free! & post Article
-          </button>
+          </p>
         </div>
         <div className="w-full md:w-1/2">
           <Image
