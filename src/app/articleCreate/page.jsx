@@ -4,6 +4,7 @@ import AvatarUpload from "../component/utils/avaterUplode/avaterUplode";
 import withPrivateRoute from "../component/utils/privetRoute/privetRoute";
 import { getTokenFromServer } from "../component/utils/tokenvarifay/tokenApi";
 import toast from "react-hot-toast";
+import UserImageUpload from "../component/utils/avaterUplode/avaterUplode";
 
 const initialData = {
   title: "",
@@ -197,7 +198,7 @@ const ArticleForm = () => {
                 className="block text-sm font-medium text-gray-700"
               ></label>
               {/* Use the AvatarUpload component here and pass handleAvatarChange as a prop */}
-              <AvatarUpload onAvatarChange={handleAvatarChange} />
+              <UserImageUpload onAvatarChange={handleAvatarChange} />
             </div>
           </div>
           {errors.cover && (

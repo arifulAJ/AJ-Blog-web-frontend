@@ -124,6 +124,7 @@
 // }
 
 // export default AvatarUpload;
+
 import axios from "axios";
 import React, { useState, useRef } from "react";
 import { toast } from "react-hot-toast";
@@ -140,7 +141,7 @@ function UserImageUpload({ onAvatarChange }) {
 
     if (file && file instanceof File) {
       if (file.size > 800000) {
-        toast.error("Your file is too big. Maximum file size is 300 KB.");
+        toast.error("Your file is too big. Maximum file size is 8000 KB.");
         return;
       }
       data.append("file", file);
@@ -201,19 +202,22 @@ function UserImageUpload({ onAvatarChange }) {
       />
 
       <div className="h-32 w-44 relative text-right py-2">
-        <div className="relative">
-          <button onClick={handleImageClick} onTouchStart={handleImageClick}>
-            <Image
-              src={
-                avatarUrl ||
-                "https://media.sproutsocial.com/uploads/2018/04/Facebook-Cover-Photo-Size.png"
-              }
-              alt="Avatar"
-              height={100}
-              width={100}
-              className="w-44 h-32  border-2 border-hover-effect relative"
-            />
-          </button>
+        <div
+          className="relative"
+          onClick={handleImageClick}
+          onTouchStart={handleImageClick}
+        >
+          <Image
+            src={
+              avatarUrl ||
+              "https://media.sproutsocial.com/uploads/2018/04/Facebook-Cover-Photo-Size.png"
+            }
+            alt="Avatar"
+            height={100}
+            width={100}
+            className="w-44 h-32  border-2 border-hover-effect relative"
+          />
+
           <div className="absolute bottom-0 right-0 px-4 py-3 text-right">
             <FaCamera
               className="text-black z-30 text-2xl"
