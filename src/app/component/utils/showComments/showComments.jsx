@@ -17,7 +17,7 @@ import {
   LinkedinIcon,
 } from "react-share";
 import { usePathname } from "next/navigation";
-
+const baseurl = process.env.NEXT_PUBLIC_BASE_URL;
 const ShowComments = ({ id }) => {
   const [comments, setComments] = useState([]);
   const [isCommentInputVisible, setCommentInputVisible] = useState(false);
@@ -116,16 +116,28 @@ const ShowComments = ({ id }) => {
               >
                 <h2 className="text-2xl mb-4">Share this page</h2>
                 <div className="flex space-x-4">
-                  <FacebookShareButton url={currentUrl} beforeShare={sharePage}>
+                  <FacebookShareButton
+                    url={`${baseurl}${currentUrl}`}
+                    beforeShare={sharePage}
+                  >
                     <FacebookIcon size={32} round />
                   </FacebookShareButton>
-                  <TwitterShareButton url={currentUrl} beforeShare={sharePage}>
+                  <TwitterShareButton
+                    url={`${baseurl}${currentUrl}`}
+                    beforeShare={sharePage}
+                  >
                     <TwitterIcon size={32} round />
                   </TwitterShareButton>
-                  <EmailShareButton url={currentUrl} beforeShare={sharePage}>
+                  <EmailShareButton
+                    url={`${baseurl}${currentUrl}`}
+                    beforeShare={sharePage}
+                  >
                     <EmailIcon size={32} round />
                   </EmailShareButton>
-                  <LinkedinShareButton url={currentUrl} beforeShare={sharePage}>
+                  <LinkedinShareButton
+                    url={`${baseurl}${currentUrl}`}
+                    beforeShare={sharePage}
+                  >
                     <LinkedinIcon size={32} round />
                   </LinkedinShareButton>
                 </div>
