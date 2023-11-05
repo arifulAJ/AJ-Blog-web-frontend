@@ -46,7 +46,7 @@ const AuthroArticle = async ({ params }) => {
           className="rounded-2xl"
           src={findArticleById.cover}
           width={1600}
-          height={4000}
+          height={800}
           alt={`${findArticleById.tags} image not found`}
         />
         <p className="text-center italic text-slate-500">
@@ -56,7 +56,7 @@ const AuthroArticle = async ({ params }) => {
       <div className="py-4 sm:py-12 px-1">
         <p className="sm:text-2xl text-slate-700">{findArticleById.body}</p>
       </div>
-      <ShowComments />
+      <ShowComments id={params.id} />
     </div>
   );
 };

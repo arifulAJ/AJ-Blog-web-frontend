@@ -53,7 +53,7 @@ const AuthroArticle = async ({ params }) => {
       <div className="py-4 sm:py-12 px-1">
         <p className="sm:text-2xl text-slate-700">{findArticleById.body}</p>
       </div>
-      <ShowComments />
+      <ShowComments id={params.id} />
     </div>
   );
 };
