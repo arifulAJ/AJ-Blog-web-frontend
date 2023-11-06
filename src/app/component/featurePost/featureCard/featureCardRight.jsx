@@ -1,14 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
+import React from "react";
 
-const MAX_BODY_LENGTH = 300;
+// const MAX_BODY_LENGTH = 300;
 const FeatureCardRight = (article) => {
-  const [showFullBody, setShowFullBody] = useState(false);
+  // const [showFullBody, setShowFullBody] = useState(false);
 
-  const toggleBodyDisplay = () => {
-    setShowFullBody(!showFullBody);
-  };
+  // const toggleBodyDisplay = () => {
+  //   setShowFullBody(!showFullBody);
+  // };
   return (
     <div className="border md:p-6 p-2 m-1 rounded-2xl align-middle justify-center hover:border-button-color duration-700">
       <Link href={`/article/${article._id}`}>
@@ -27,7 +27,7 @@ const FeatureCardRight = (article) => {
             <h2 className=" font-semibold">Title: {article.title}</h2>
             <p>
               <span className="font-semibold">Article: </span>
-              {showFullBody
+              {/* {showFullBody
                 ? article.body
                 : article.body.slice(0, MAX_BODY_LENGTH)}
               {article.body.length > MAX_BODY_LENGTH && (
@@ -37,7 +37,7 @@ const FeatureCardRight = (article) => {
                 >
                   {showFullBody ? " ..Read Less" : " ..Read More"}
                 </button>
-              )}
+              )} */}
             </p>
           </div>
         </div>

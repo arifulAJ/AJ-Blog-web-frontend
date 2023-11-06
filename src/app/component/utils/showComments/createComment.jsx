@@ -2,11 +2,13 @@ import React, { useState, useEffect, useRef } from "react";
 import { getTokenFromServer } from "../tokenvarifay/tokenApi";
 import toast from "react-hot-toast";
 
+import withPrivateRoute from "../privetRoute/privetRoute";
 const baseurl = process.env.NEXT_PUBLIC_BASE_URL;
 
 const CommentInput = ({ id, onClose }) => {
   const [comment, setComment] = useState("");
   const [error, setError] = useState(""); // Add an error state
+
   const commentInputRef = useRef(null);
 
   useEffect(() => {
@@ -41,6 +43,7 @@ const CommentInput = ({ id, onClose }) => {
           Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify({ body: comment }),
+        cache: "no-cache",
       });
 
       if (response.ok) {
@@ -49,6 +52,8 @@ const CommentInput = ({ id, onClose }) => {
 
         setComment("");
         onClose();
+
+        window.location.reload();
       } else {
         console.error("Failed to post comment.");
       }
@@ -87,4 +92,4 @@ const CommentInput = ({ id, onClose }) => {
   );
 };
 
-export default CommentInput;
+export default withPrivateRoute(CommentInput);

@@ -1,6 +1,6 @@
 "use client";
-import React, { useEffect, useState } from "react"; // Import necessary React modules
-import getArticleNOQuary from "../component/libs/getArticleNOQuary";
+import React, { useState, useEffect } from "react"; // Import necessary React modules
+import { getArticleNOQuarys } from "../component/libs/getArticleNOQuary";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -10,7 +10,7 @@ const ShowArticleTags = () => {
 
   useEffect(() => {
     const fetchArticleTags = async () => {
-      const allArticle = await getArticleNOQuary();
+      const allArticle = await getArticleNOQuarys();
 
       // Create an object to store tag counts and cover images
       const counts = {};
@@ -43,7 +43,7 @@ const ShowArticleTags = () => {
 
     fetchArticleTags(); // Fetch and count tags when the component mounts
   }, []);
-
+  // const { counts: tagCounts, covers: coverImages } = getArticleNOQuary();
   return (
     <div className=" px-4 lg:px-32 sm:px-12 md:py-1">
       <h1 className="text-center font-semibold text-3xl sm:text-4xl py-8">

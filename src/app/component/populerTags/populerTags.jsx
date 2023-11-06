@@ -1,58 +1,10 @@
-"use client";
-
 import Link from "next/link";
 import getArticleNOQuary from "../libs/getArticleNOQuary";
-import { useEffect, useState } from "react";
+
 import Image from "next/image";
 
-const PopulerTags = () => {
-  const [tagCounts, setTagCounts] = useState({});
-  const [coverImages, setCoverImages] = useState({});
-
-  useEffect(() => {
-    const fetchArticleTags = async () => {
-      const allArticles = await getArticleNOQuary();
-
-      const counts = {};
-      const covers = {};
-
-      allArticles.forEach((article) => {
-        const tags = article.tags.split(",").map((tag) => tag.trim());
-
-        tags.forEach((tag) => {
-          if (counts[tag]) {
-            counts[tag]++;
-          } else {
-            counts[tag] = 1;
-          }
-          if (!covers[tag]) {
-            covers[tag] = article.cover;
-          }
-        });
-      });
-
-      // Sort tags by their counts in descending order
-      const sortedTags = Object.keys(counts).sort(
-        (a, b) => counts[b] - counts[a]
-      );
-
-      // Select the top four tags
-      const topTags = sortedTags.slice(0, 4);
-
-      // Create new objects with the top tags and their cover images
-      const topTagCounts = {};
-      const topCoverImages = {};
-      topTags.forEach((tag) => {
-        topTagCounts[tag] = counts[tag];
-        topCoverImages[tag] = covers[tag];
-      });
-
-      setTagCounts(topTagCounts);
-      setCoverImages(topCoverImages);
-    };
-
-    fetchArticleTags();
-  }, []);
+const PopulerTags = async () => {
+  const { counts: tagCounts, covers: coverImages } = await getArticleNOQuary();
 
   return (
     <div className="md:px-32 sm:px-12 md:py-1">

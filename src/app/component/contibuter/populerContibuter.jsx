@@ -1,12 +1,12 @@
 import React from "react";
-import getArticleNOQuary from "../libs/getArticleNOQuary";
+import { getArticleNOQuarys } from "../libs/getArticleNOQuary";
 import getAllUseeOfAuthor from "../libs/getAllUseeOfAuthor";
 import Image from "next/image";
 import Link from "next/link";
 
 const PopulerContibuter = async () => {
   // Fetch articles and authors
-  const allArticles = await getArticleNOQuary();
+  const allArticles = await getArticleNOQuarys();
   const allUsers = await getAllUseeOfAuthor();
 
   // Function to count articles by author
