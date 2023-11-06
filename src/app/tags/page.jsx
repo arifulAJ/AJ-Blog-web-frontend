@@ -45,7 +45,7 @@ const ShowArticleTags = () => {
   }, []);
 
   return (
-    <div className="md:px-32 sm:px-12 md:py-1">
+    <div className=" px-4 lg:px-32 sm:px-12 md:py-1">
       <h1 className="text-center font-semibold text-3xl sm:text-4xl py-8">
         Articles Filtered by Tag
       </h1>
@@ -57,13 +57,14 @@ const ShowArticleTags = () => {
             className="grid border bg-hover-effect rounded transition  ease-linear transform hover:bg-opacity-20 hover:cursor-pointer hover:backdrop-blur-lg"
           >
             <Link href={`/tags/${tag}`}>
-              <div>
+              <div className="h-60 overflow-hidden">
                 <Image
-                  className="rounded"
+                  className="rounded "
                   src={coverImages[tag] || "default-cover-image-url"} // Use cover image for the tag, or a default image
                   alt={tag}
                   width={600}
                   height={400}
+                  style={{ objectFit: "cover", width: "100%", height: "100%" }}
                 />
               </div>
               <div className="flex text-2xl justify-between p-4  ">

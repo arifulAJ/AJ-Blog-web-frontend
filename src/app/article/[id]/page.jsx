@@ -45,8 +45,8 @@ const AuthroArticle = async ({ params }) => {
         <Image
           className="rounded-2xl"
           src={findArticleById.cover}
-          width={1600}
-          height={800}
+          width={1100}
+          height={600}
           alt={`${findArticleById.tags} image not found`}
         />
         <p className="text-center italic text-slate-500">

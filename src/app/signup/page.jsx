@@ -110,9 +110,9 @@ const SignUPPage = () => {
   };
 
   return (
-    <div>
+    <div className="">
       <div className="bg-gray-100 min-h-screen flex flex-col items-center justify-center">
-        <div className="bg-white rounded-lg shadow p-8 w-96">
+        <div className="bg-white rounded-lg shadow p-8 sm:w-96">
           <Head>
             <title>Signup</title>
           </Head>

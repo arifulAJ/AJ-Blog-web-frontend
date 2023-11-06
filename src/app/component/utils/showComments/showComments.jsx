@@ -15,6 +15,8 @@ import {
   TwitterIcon,
   EmailIcon,
   LinkedinIcon,
+  FacebookMessengerShareButton,
+  FacebookMessengerIcon,
 } from "react-share";
 import { usePathname } from "next/navigation";
 const baseurl = process.env.NEXT_PUBLIC_BASE_URL;
@@ -122,6 +124,12 @@ const ShowComments = ({ id }) => {
                   >
                     <FacebookIcon size={32} round />
                   </FacebookShareButton>
+                  <FacebookMessengerShareButton
+                    url={`${baseurl}${currentUrl}`}
+                    beforeShare={sharePage}
+                  >
+                    <FacebookMessengerIcon size={32} round />
+                  </FacebookMessengerShareButton>
                   <TwitterShareButton
                     url={`${baseurl}${currentUrl}`}
                     beforeShare={sharePage}
@@ -165,7 +173,9 @@ const ShowComments = ({ id }) => {
       {comments.map((comment) => (
         <CommentCard key={comment._id} comment={comment} />
       ))}
-      {isCommentInputVisible && <CommentInput id={id} />}
+      {isCommentInputVisible && (
+        <CommentInput onClose={() => setCommentInputVisible(false)} id={id} />
+      )}
     </div>
   );
 };

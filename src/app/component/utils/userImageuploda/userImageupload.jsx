@@ -17,10 +17,10 @@ function UserImageUpload({ onAvatarChange, initialAvatarUrl }) {
     const data = new FormData();
 
     if (file && file instanceof File) {
-      if (file.size > 30000) {
-        toast.error("Your file is too big. Maximum file size is 3000 KB.");
-        return;
-      }
+      // if (file.size > 30000) {
+      //   toast.error("Your file is too big. Maximum file size is 3000 KB.");
+      //   return;
+      // }
       data.append("file", file);
       data.append("upload_preset", "image_preset");
     }
