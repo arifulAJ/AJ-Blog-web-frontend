@@ -56,9 +56,9 @@ const FeaturePostSection = async () => {
           Retriveing the article.........
         </h1>
       )} */}
-      <div className="flex flex-col md:flex-row my-8 ">
+      <div className="flex flex-col lg:flex-row my-8 ">
         <div className="basis-1/2">
-          {articles.slice(0, 5).map((article) => (
+          {articles.slice(0, 4).map((article) => (
             <div key={article.id}>
               <FeatureCard {...article} />
             </div>

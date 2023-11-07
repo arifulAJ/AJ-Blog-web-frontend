@@ -1,7 +1,7 @@
 // import axios from "axios";
 // import React, { useState } from "react";
 
-// function AvatarUpload({ onAvatarChange }) {
+// function UserImageUpload({ onAvatarChange }) {
 //   const [file, setFile] = useState(null);
 //   const [url, setUrl] = useState("");
 //   const [isUploading, setIsUploading] = useState(false);
@@ -123,7 +123,7 @@
 //   );
 // }
 
-// export default AvatarUpload;
+// export default UserImageUpload;
 
 import axios from "axios";
 import React, { useState, useRef } from "react";
@@ -140,10 +140,10 @@ function UserImageUpload({ onAvatarChange }) {
     const data = new FormData();
 
     if (file && file instanceof File) {
-      if (file.size > 800000) {
-        toast.error("Your file is too big. Maximum file size is 8000 KB.");
-        return;
-      }
+      // if (file.size > 800000) {
+      //   toast.error("Your file is too big. Maximum file size is 8000 KB.");
+      //   return;
+      // }
       data.append("file", file);
       data.append("upload_preset", "image_preset");
     }

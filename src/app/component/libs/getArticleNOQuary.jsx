@@ -9,46 +9,6 @@ export async function getArticleNOQuarys() {
   return res.json();
 }
 
-// export default async function getArticleNOQuary() {
-//   const baseurl = process.env.NEXT_PUBLIC_BASE_URL;
-
-//   const res = await fetch(`${baseurl}/api/v1/articles/all`, {
-//     cache: "no-cache",
-//   });
-
-//   if (!res.ok) {
-//     throw Error("The articles are not available here.");
-//   }
-
-//   const data = await res.json();
-
-//   // Create an object to store tag counts and covers
-//   const counts = {};
-//   const covers = {};
-
-//   // Iterate through the articles and count tags and associate cover images
-//   data.forEach((article) => {
-//     const tags = article.tags.split(",").map((tag) => tag.trim());
-
-//     // Count tags
-//     tags.forEach((tag) => {
-//       if (counts[tag]) {
-//         counts[tag]++;
-//       } else {
-//         counts[tag] = 1;
-//       }
-//     });
-
-//     // Associate cover image with each tag
-//     tags.forEach((tag) => {
-//       if (!covers[tag]) {
-//         covers[tag] = article.cover; // Assuming article has a 'cover' property
-//       }
-//     });
-//   });
-
-//   return { counts, covers };
-// }
 export default async function getArticleNOQuary() {
   const baseurl = process.env.NEXT_PUBLIC_BASE_URL;
 
