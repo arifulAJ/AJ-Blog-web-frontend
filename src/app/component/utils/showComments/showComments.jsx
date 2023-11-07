@@ -189,6 +189,7 @@ import {
   FacebookMessengerIcon,
 } from "react-share";
 import { usePathname } from "next/navigation";
+import toast from "react-hot-toast";
 const baseurl = process.env.NEXT_PUBLIC_BASE_URL_OWN;
 
 const ShowComments = ({ id }) => {
@@ -222,6 +223,7 @@ const ShowComments = ({ id }) => {
     textArea.select();
     document.execCommand("copy");
     document.body.removeChild(textArea);
+    toast.success("copyed");
   };
 
   useEffect(() => {
