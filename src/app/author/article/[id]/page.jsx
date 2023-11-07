@@ -3,7 +3,7 @@ import getArticleById from "../../../component/libs/getArticleById";
 import getUseById from "../../../component/libs/getUseById";
 import Image from "next/image";
 import ShowComments from "../../../component/utils/showComments/showComments";
-
+import Article from "../../../component/utils/articleBodyTrim/articleTrim";
 const AuthroArticle = async ({ params }) => {
   const findArticleById = await getArticleById(params.id);
   const userId = findArticleById.author.id;
@@ -39,19 +39,21 @@ const AuthroArticle = async ({ params }) => {
         </div>
       </div>
       <div>
-        <Image
-          className="rounded-2xl"
-          src={findArticleById.cover}
-          width={1600}
-          height={4000}
-          alt={`${findArticleById.tags} image not found`}
-        />
+        <div>
+          <Image
+            className="rounded-2xl"
+            src={findArticleById.cover}
+            width={1200}
+            height={300}
+            alt={`${findArticleById.tags} image not found`}
+          />
+        </div>
         <p className="text-center italic text-slate-500">
           Uploded by, {findArticleById.author.name}
         </p>
       </div>
       <div className="py-4 sm:py-12 px-1">
-        <p className="sm:text-2xl text-slate-700">{findArticleById.body}</p>
+        <Article findArticleById={findArticleById} />
       </div>
       <ShowComments id={params.id} />
     </div>

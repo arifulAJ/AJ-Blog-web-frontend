@@ -19,7 +19,7 @@ import {
   FacebookMessengerIcon,
 } from "react-share";
 import { usePathname } from "next/navigation";
-const baseurl = process.env.NEXT_PUBLIC_BASE_URL;
+const baseurl = process.env.NEXT_PUBLIC_BASE_URL_OWN;
 const ShowComments = ({ id }) => {
   const [comments, setComments] = useState([]);
   const [isCommentInputVisible, setCommentInputVisible] = useState(false);
@@ -28,6 +28,7 @@ const ShowComments = ({ id }) => {
   const [shareDialogVisible, setShareDialogVisible] = useState(false);
   const dialogRef = useRef(null);
   const currentUrl = usePathname();
+  const URL = `${baseurl}${currentUrl}`;
 
   const toggleCommentInput = () => {
     setCommentInputVisible(!isCommentInputVisible);
@@ -118,34 +119,22 @@ const ShowComments = ({ id }) => {
               >
                 <h2 className="text-2xl mb-4">Share this page</h2>
                 <div className="flex space-x-4">
-                  <FacebookShareButton
-                    url={`${baseurl}${currentUrl}`}
-                    beforeShare={sharePage}
-                  >
+                  <FacebookShareButton url={URL} beforeShare={sharePage}>
                     <FacebookIcon size={32} round />
                   </FacebookShareButton>
                   <FacebookMessengerShareButton
-                    url={`${baseurl}${currentUrl}`}
+                    url={URL}
                     beforeShare={sharePage}
                   >
                     <FacebookMessengerIcon size={32} round />
                   </FacebookMessengerShareButton>
-                  <TwitterShareButton
-                    url={`${baseurl}${currentUrl}`}
-                    beforeShare={sharePage}
-                  >
+                  <TwitterShareButton url={URL} beforeShare={sharePage}>
                     <TwitterIcon size={32} round />
                   </TwitterShareButton>
-                  <EmailShareButton
-                    url={`${baseurl}${currentUrl}`}
-                    beforeShare={sharePage}
-                  >
+                  <EmailShareButton url={URL} beforeShare={sharePage}>
                     <EmailIcon size={32} round />
                   </EmailShareButton>
-                  <LinkedinShareButton
-                    url={`${baseurl}${currentUrl}`}
-                    beforeShare={sharePage}
-                  >
+                  <LinkedinShareButton url={URL} beforeShare={sharePage}>
                     <LinkedinIcon size={32} round />
                   </LinkedinShareButton>
                 </div>

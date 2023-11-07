@@ -3,6 +3,7 @@ import getArticleById from "../../../component/libs/getArticleById";
 import getUseById from "../../../component/libs/getUseById";
 import Image from "next/image";
 import ShowComments from "../../../component/utils/showComments/showComments";
+import Article from "../../../component/utils/articleBodyTrim/articleTrim";
 
 const showTagsArticle = async ({ params }) => {
   const findArticleById = await getArticleById(params.id);
@@ -51,7 +52,7 @@ const showTagsArticle = async ({ params }) => {
         </p>
       </div>
       <div className="py-4 sm:py-12 px-1">
-        <p className="sm:text-2xl text-slate-700">{findArticleById.body}</p>
+        <Article findArticleById={findArticleById} />
       </div>
       <ShowComments id={params.id} />
     </div>

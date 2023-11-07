@@ -53,6 +53,7 @@ function UserImageUpload({ onAvatarChange, initialAvatarUrl }) {
       try {
         const imgUrl = await uploadFile(selectedFile);
         onAvatarChange(imgUrl);
+        toast.success("your image added submit now");
       } catch (error) {
         console.error(error.message);
       }

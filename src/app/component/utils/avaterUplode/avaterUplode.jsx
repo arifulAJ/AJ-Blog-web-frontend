@@ -176,6 +176,7 @@ function UserImageUpload({ onAvatarChange }) {
       try {
         const imgUrl = await uploadFile(selectedFile);
         onAvatarChange(imgUrl);
+        toast.success("your avatar added");
       } catch (error) {
         console.error(error.message);
       }

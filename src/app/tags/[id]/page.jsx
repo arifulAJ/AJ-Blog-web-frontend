@@ -17,6 +17,7 @@ const TagesSpecific = ({ params }) => {
     async function fetchArticles() {
       try {
         const response = await getArticleByTags(params.id, page);
+
         const { articles, totalPages } = response;
         setArticles(articles);
 

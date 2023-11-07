@@ -1,11 +1,14 @@
 export async function getArticleNOQuarys() {
   const baseurl = process.env.NEXT_PUBLIC_BASE_URL;
 
-  const res = await fetch(`${baseurl}/api/v1/articles/all`);
+  const res = await fetch(`${baseurl}/api/v1/articles/all`, {
+    cache: "no-cache",
+  });
 
   if (!res.ok) {
     throw Error("this article are not abiable here ");
   }
+
   return res.json();
 }
 
