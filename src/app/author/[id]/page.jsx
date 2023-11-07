@@ -1,5 +1,5 @@
 import Link from "next/link";
-import getAllArticle from "../../component/libs/getAllArticle";
+
 import Image from "next/image";
 import { getArticleNOQuarys } from "../../component/libs/getArticleNOQuary";
 const page = async ({ params }) => {
@@ -21,13 +21,13 @@ const page = async ({ params }) => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 ">
           {filteredArticle.map((article) => (
-            <Link
-              className="font-semibold hover:text-button-color"
-              href={`article/${article._id}`}
+            <div
+              key={article._id}
+              className=" p-2 rounded-lg overflow-hidden shadow-md  border-2 border-transparent hover:border-button-color transition duration-300"
             >
-              <div
-                key={article._id}
-                className=" p-2 rounded-lg overflow-hidden shadow-md  border-2 border-transparent hover:border-button-color transition duration-300"
+              <Link
+                className="font-semibold hover:text-button-color"
+                href={`article/${article._id}`}
               >
                 <div className="h-60">
                   <Image
@@ -47,8 +47,8 @@ const page = async ({ params }) => {
                   <span className="font-semibold"> Artice:</span>
                   {article.body.slice(0, 100)} ... Read full article
                 </p>
-              </div>
-            </Link>
+              </Link>
+            </div>
           ))}
         </div>
       </div>
