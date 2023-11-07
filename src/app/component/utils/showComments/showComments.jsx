@@ -327,11 +327,10 @@ const ShowComments = ({ id }) => {
                   </p> */}
                   <div className="overflow-hidden px-1 w-40 sm:w-64 ">
                     <div
-                      className="px-2 hover:border "
+                      className="px-2  hover:border -mb-1 sm:-mb-4 "
                       style={{
                         whiteSpace: "nowrap",
                         overflowX: "auto",
-                        marginBottom: "-17px",
                       }}
                     >
                       {URL}
