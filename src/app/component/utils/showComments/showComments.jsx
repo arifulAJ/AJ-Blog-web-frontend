@@ -176,6 +176,8 @@ import { AiFillLike, AiOutlineLike } from "react-icons/ai";
 import { FaRegComment, FaShare } from "react-icons/fa";
 import CommentCard from "./commentCard";
 import CommentInput from "./createComment";
+import CreateLikes from "../showLikes/createLikes";
+import ShowLikes from "../showLikes/showLikes";
 import {
   FacebookShareButton,
   TwitterShareButton,
@@ -190,6 +192,7 @@ import {
 } from "react-share";
 import { usePathname } from "next/navigation";
 import toast from "react-hot-toast";
+
 const baseurl = process.env.NEXT_PUBLIC_BASE_URL_OWN;
 
 const ShowComments = ({ id }) => {
@@ -201,6 +204,16 @@ const ShowComments = ({ id }) => {
   const dialogRef = useRef(null);
   const currentUrl = usePathname();
   const URL = `${baseurl}${currentUrl}`;
+  const [parentLikeCount, setParentLikeCount] = useState(0);
+  const [parentCommentCount, setParentCommentCount] = useState("");
+
+  // Callback function to handle likeCount update from CreateLikes
+  const handleLikeCountUpdate = (newLikeCount) => {
+    setParentLikeCount(newLikeCount);
+  };
+  const handelCommentCountUpdate = (newComment) => {
+    setParentCommentCount(newComment);
+  };
 
   const toggleCommentInput = () => {
     setCommentInputVisible(!isCommentInputVisible);
@@ -237,7 +250,7 @@ const ShowComments = ({ id }) => {
       }
     };
     fetchData();
-  }, [id, limit]);
+  }, [id, limit, parentCommentCount]);
 
   useEffect(() => {
     function handleClickOutside(event) {
@@ -261,10 +274,7 @@ const ShowComments = ({ id }) => {
     <div>
       <div className="flex justify-between py-2 sm:px-4">
         <div className="flex items-center">
-          <button className="bg-button-color p-1 text-white rounded-full flex items-center">
-            <AiFillLike />
-          </button>{" "}
-          2
+          <ShowLikes id={id} parentLikeCount={parentLikeCount} />
         </div>
         <button
           onClick={allComment}
@@ -277,20 +287,18 @@ const ShowComments = ({ id }) => {
       <div className="sm:px-4 font-semibold text-slate-700">
         <hr />
         <div className="flex justify-between">
-          <button className="py-2 sm:px-4 flex items-center hover-bg-gray-200 rounded">
-            <AiOutlineLike />
-            Like
-          </button>
+          <CreateLikes id={id} onLikeCountUpdate={handleLikeCountUpdate} />
+
           <button
             onClick={toggleCommentInput}
-            className="py-2 px-4 flex items-center hover-bg-gray-200 rounded"
+            className="py-2 px-4 flex items-center sm:text-xl hover:bg-gray-200 rounded"
           >
             <FaRegComment />
             Comment
           </button>
           <button
             onClick={() => setShareDialogVisible(true)} // Show the share dialog
-            className="py-2 px-4 flex items-center hover-bg-gray-200 rounded"
+            className="py-2 px-4 flex items-center sm:text-xl hover:bg-gray-200 rounded"
           >
             <FaShare />
             Share
@@ -358,6 +366,7 @@ const ShowComments = ({ id }) => {
         </div>
         <hr />
       </div>
+
       <div>
         <button
           className="underline font-medium px-4 py-2"
@@ -368,11 +377,19 @@ const ShowComments = ({ id }) => {
         </button>
       </div>
       {comments.map((comment) => (
-        <CommentCard key={comment._id} comment={comment} />
+        <CommentCard
+          parentCommentCount={parentCommentCount}
+          key={comment._id}
+          comment={comment}
+        />
       ))}
 
       {isCommentInputVisible && (
-        <CommentInput onClose={() => setCommentInputVisible(false)} id={id} />
+        <CommentInput
+          onCommentUpdate={handelCommentCountUpdate}
+          onClose={() => setCommentInputVisible(false)}
+          id={id}
+        />
       )}
     </div>
   );

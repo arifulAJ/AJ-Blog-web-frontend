@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import getUseById from "../../libs/getUseById";
 
-const CommentCard = ({ comment }) => {
+const CommentCard = ({ comment, parentCommentCount }) => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
@@ -14,7 +14,7 @@ const CommentCard = ({ comment }) => {
     if (!user) {
       fetchUser();
     }
-  }, [comment.authorId, user]);
+  }, [comment.authorId, user, parentCommentCount]);
 
   return (
     <div className="py-2 px-4">

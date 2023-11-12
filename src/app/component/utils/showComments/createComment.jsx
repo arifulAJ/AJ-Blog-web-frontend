@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 import withPrivateRoute from "../privetRoute/privetRoute";
 const baseurl = process.env.NEXT_PUBLIC_BASE_URL;
 
-const CommentInput = ({ id, onClose }) => {
+const CommentInput = ({ id, onClose, onCommentUpdate }) => {
   const [comment, setComment] = useState("");
   const [error, setError] = useState(""); // Add an error state
 
@@ -45,15 +45,15 @@ const CommentInput = ({ id, onClose }) => {
         body: JSON.stringify({ body: comment }),
         cache: "no-cache",
       });
-
+      const res = await response.json();
+      console.log(res.newComment.createdAt);
       if (response.ok) {
-        console.log("Comment posted successfully.");
         toast.success("Created successfully");
 
         setComment("");
         onClose();
-
-        window.location.reload();
+        onCommentUpdate(res.newComment.createdAt);
+        // window.location.reload();
       } else {
         console.error("Failed to post comment.");
       }
